@@ -14,4 +14,7 @@ The students will be assigned several tasks on a weekly basis to be completed by
 * Student/mentor introductions and determine weekly meeting times
 * Discuss current knowledge of students on Python, GitHub and Machine Learning
 * Help out students setup Python and Github if necessary and work out a few examples interactively 
-* Assign reading/practice examples of the basics of GitHub and Python, as well as reading material on Neural Networks to start to become familiarized with the subject.
+* Assign reading/practice examples of the basics of GitHub and Python, as well as reading material on Neural Networks to start to become familiarized with the subject. <br>
+
+Useful Documentation<br>
+[Getting Started with GitHub](https://docs.github.com/en)
