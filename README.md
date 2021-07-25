@@ -51,7 +51,6 @@ see github-examples: [fork-and-branch git workflow](https://blog.scottlowe.org/2
 * Read and work out the exercises/examples discussed in Part 1 of the series: <br>
 [Machine Learning for Beginners: An Introduction to Neural Networks](https://victorzhou.com/blog/intro-to-neural-networks/) 
 
-<br>
 `Second Week: August 09 - August 15, 2021` <br>
 
 * Discuss homework assignment from the First Week 
