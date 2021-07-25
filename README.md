@@ -24,7 +24,7 @@ a 4-post series written by Victor Zhou, who has worked as a Facebook Engineer, a
 
 There is also a supplementary reading material (online blog article) written by Déborah Mesquita (data scientist) which can be used as supplementary material to the main Reading Material, and is strongly encouraged to read in order to learn about different concepts in Neureal Networks.
 
-**Reading Material:** [Neural Networks From Scratch] (https://victorzhou.com/series/neural-networks-from-scratch/) by Victor Zhou <br>
+**Reading Material:** [Neural Networks From Scratch](https://victorzhou.com/series/neural-networks-from-scratch/) by Victor Zhou <br>
 
 **Supplementary Material:** [Python AI: How to Build a Neural Network & Make Predictions](https://realpython.com/python-ai-neural-network/) by Déborah Mesquita
 <br><br> 
