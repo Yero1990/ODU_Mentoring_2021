@@ -12,10 +12,9 @@ about the reading material and homework exercises assigned.
 You can contact me via email if there is any questions or concerns regarding the reading material/exercises assigned, and I will do my best to help. Keep in mind, this is a program to encourage  and foster independent research in the part of students, and there is a possibility I may not be able to answer some of your questions (hence, you will have to do research online)
 <br>
 
-[REYES Mentoring Program 2021: Expectations and Timeline](https://github.com/Yero1990/ODU_Mentoring_2021/blob/master/REYES_Mentoring_Program_Expectations_and_Timeline.pdf)
+[REYES Mentoring Program 2021: Expectations and Timeline](https://github.com/Yero1990/ODU_Mentoring_2021/blob/master/REYES_Mentoring_Program_Expectations_and_Timeline.pdf) <br>
 
-<br>
-**Mentor Information**<br>
+**Mentor Information** <br>
 Mentor Name: Carlos Yero <br> 
 email: cyero002@fiu.edu
 
