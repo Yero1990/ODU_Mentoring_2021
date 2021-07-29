@@ -124,7 +124,8 @@ class OurNeuralNetwork:
       if epoch % 10 == 0:
         y_preds = np.apply_along_axis(self.feedforward, 1, data)
         loss = mse_loss(all_y_trues, y_preds)
-        print("Epoch %d loss: %.3f" % (epoch, loss))
+        print("Epoch %d loss: %.3f\n" % (epoch, loss))
+
         epoch_arr.append(epoch)
         loss_arr.append(loss)
         
@@ -136,6 +137,7 @@ data = np.array([
   [152-141.25, 70-66.75],   # Charlie
   [120-141.25, 60-66.75], # Diana
 ])
+
 print(data)
 #data = np.array([
 #  [-2, -1],  # Alice
@@ -155,5 +157,17 @@ all_y_trues = np.array([
 network = OurNeuralNetwork()
 network.train(data, all_y_trues)
 
+
+# Make some predictions
+
+emily = np.array([128-141.25, 63-66.75]) # 128 pounds, 63 inches
+frank = np.array([155-141.25, 68-66.75])  # 155 pounds, 68 inches
+
+
+print("Emily: %.3f" % network.feedforward(emily)) #  - Female (if >0.5)
+print("Frank: %.3f" % network.feedforward(frank)) # 0.039 - M (if <0.5)
+
+
+#plot loss versus epochs to show that training the neural network improves its predictive power (i.e., small loss)
 plt.plot(epoch_arr, loss_arr, linestyle='-', marker='')
 plt.show()
