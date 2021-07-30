@@ -23,7 +23,7 @@ To successfully carry out this research project, the students are required to ha
 
 * Python programming language (preferably recent version, e.g., Python 3.8.4)
 * GitHub (which is a web-based version-control and collaboratio platform for software developers)
-* LaTex (which is a document preparation system to facilitate the writing of research and scientific papers)
+* LaTeX (which is a document preparation system to facilitate the writing of research and scientific papers)
 
 
 **Mentor Information** <br>
@@ -35,6 +35,8 @@ email: cyero002@fiu.edu
 2.  Ajay Mehra (1physics12345@gmail.com)<br>
 3.  Resha Mau (resha.mau@ucalgary.ca)
 
+**Time Zones (for the curious minds)** <br>
+[Time Zone Map](https://www.timeanddate.com/time/map/#!cities=111,55,862,3382) shows  a world map with the marked timezones based on our current residences. We can look at this map during the meeting, and it will show what is the local time for each of us. We cover a wide range of the world map.
 ## Tasks
 The students will be assigned several tasks on a weekly basis to be completed by the end of each week, and we'll meet at the start of the following week to discuss the progress made and new tasks to be completed. The entire project will last from 4-6 weeks, after which the students can continue to work on the project if there is enough interest to do so. <br>
 
@@ -57,15 +59,15 @@ There is also a supplementary reading material (online blog article) written by 
 
 * Discuss current knowledge of students on Python, GitHub and Machine Learning
 
-* Help out students install and setup Github and Python if necessary <br> 
-  ( see [github-installation](https://github.com/git-guides/install-git) and [python-installation](https://www.wikihow.com/Install-Python#Mac) )
+* Help out students install and setup Github, Python and LaTeX if necessary <br> 
+  ( see [github-installation](https://github.com/git-guides/install-git), [python-installation](https://www.wikihow.com/Install-Python#Mac) and [latex-installation](https://www.latex-project.org/get/) )
   
 * Work out a few examples interactively of how to use Python and Github <br>
 see python-examples: [An Informal Introduction to Python](https://docs.python.org/3/tutorial/introduction.html) <br> 
 see github-examples: [fork-and-branch git workflow](https://blog.scottlowe.org/2015/01/27/using-fork-branch-git-workflow/) (specific example to help you setup a copy of this repository)
 
-* Watch short (~8 min), informative YouTube video about Convolutional Neural Networks (see [CNNs video](https://www.youtube.com/watch?v=YRhxdVk_sIs)) <br>
-(This video describes the basics of CNNs via an example of the most popular application: image/pattern recognition, which is what this mentoring program is mainly about.)
+* Watch short (~5 min), informative YouTube video about Neural Networks (see [What is a Neural Network? video](https://www.youtube.com/watch?v=YRhxdVk_sIs)) <br>
+(This video describes the basics of Neural Networks and various examples of the most popular applications.)
 
  #### 1st Week: Homework Assignment
 * Read and work out the exercises/examples discussed in Part 1 of the series: <br>
@@ -75,6 +77,9 @@ see github-examples: [fork-and-branch git workflow](https://blog.scottlowe.org/2
 
 * Discuss homework assignment from the First Week 
   * I will help in solving any exercises the students had difficulty to complete 
+* Watch short (~8 min), informative YouTube video about Convolutional Neural Networks (see [CNNs video](https://www.youtube.com/watch?v=YRhxdVk_sIs)) <br>
+(This video describes the basics of CNNs via an example of the most popular application: image/pattern recognition, which is what this mentoring program is mainly about.)
+
 
  #### 2nd Week: Homework Assignment
 We will skip Part 2, as it is an introduction to Recurrent Neural Networks (RNNs) which is out of the scope of this program.  You can briefly read about RNNs if you are interested in its applications.
