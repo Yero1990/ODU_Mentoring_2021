@@ -12,11 +12,28 @@ about the reading material and homework exercises assigned.
 You can contact me via email if there is any questions or concerns regarding the reading material/exercises assigned, and I will do my best to help. Keep in mind, this is a program to encourage  and foster independent research in the part of students, and there is a possibility I may not be able to answer some of your questions (hence, you will have to do research online)
 <br>
 
-[REYES Mentoring Program 2021: Expectations and Timeline](https://github.com/Yero1990/ODU_Mentoring_2021/blob/master/REYES_Mentoring_Program_Expectations_and_Timeline.pdf) <br>
+By the end of the program, each student will be expected to provide **a 2-4 page report 
+and/or a 5-10 min. oral presentation on their project.** The students are also encouraged to present a weekly 3-5 minute informal talk on thei progress of their research projects or topics they learned through the REYES program. <br>
+See Program of Study for more information.
+
+Program of Study: [REYES Mentoring Program 2021: Expectations and Timeline](https://github.com/Yero1990/ODU_Mentoring_2021/blob/master/REYES_Mentoring_Program_Expectations_and_Timeline.pdf) <br>
+
+**Specific Software Requirements** <br>
+To successfully carry out this research project, the students are required to have installed the following: <br>
+
+* Python programming language (preferably recent version, e.g., Python 3.8.4)
+* GitHub (which is a web-based version-control and collaboratio platform for software developers)
+* LaTex (which is a document preparation system to facilitate the writing of research and scientific papers)
+
 
 **Mentor Information** <br>
 Mentor Name: Carlos Yero <br> 
 email: cyero002@fiu.edu
+
+**Mentees Information**<br>
+1.  Zain Mothupi (mothupizain@gmail.com)<br> 
+2.  Ajay Mehra (1physics12345@gmail.com)<br>
+3.  Resha Mau (resha.mau@ucalgary.ca)
 
 ## Tasks
 The students will be assigned several tasks on a weekly basis to be completed by the end of each week, and we'll meet at the start of the following week to discuss the progress made and new tasks to be completed. The entire project will last from 4-6 weeks, after which the students can continue to work on the project if there is enough interest to do so. <br>
