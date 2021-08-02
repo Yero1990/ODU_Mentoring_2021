@@ -1,4 +1,10 @@
 # Machine Learning (ML) Project
+## REYES Mentorship Important Information
+ * First, prior to (or on the first meeting) with the student(s) ask them to provide their age via email, and confirm that this age matches the age they put in their application form.
+ *  We also ask you to record ALL sessions with the mentees and to keep copies of these meetings. We do not need to have a copy, but they may be requested in the future. 
+ *  On this same note, we ask the mentors to keep their relationship with the mentees to be strictly professional, and as previously stated all exchanges should be documented.
+
+
 ## Description
 This github repository is intended to be used for and by the HALES/REYES summer students to save their work (relevant computer codes / notes) on this project. The main part of the project will consist of giving the students an introduction to a subfield of Machine Learning known as Deep Learning and is
 concerned with teaching a machine (e.g., computer) how to process and interpret information inspired by how the human brain and nervous system work. Deep Learning incorporates artificial neural networks (ANNs) within its architecture 
