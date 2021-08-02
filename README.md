@@ -72,7 +72,7 @@ There is also a supplementary reading material (online blog article) written by 
 see python-examples: [An Informal Introduction to Python](https://docs.python.org/3/tutorial/introduction.html) <br> 
 see github-examples: [fork-and-branch git workflow](https://blog.scottlowe.org/2015/01/27/using-fork-branch-git-workflow/) (specific example to help you setup a copy of this repository)
 
-* Watch short (~5 min), informative YouTube video about Neural Networks (see [What is a Neural Network? video](https://www.youtube.com/watch?v=YRhxdVk_sIs)) <br>
+* Watch short (~5 min), informative YouTube video about Neural Networks (see [What is a Neural Network? video](https://www.youtube.com/watch?v=bfmFfD2RIcg)) <br>
 (This video describes the basics of Neural Networks and various examples of the most popular applications.)
 
  #### 1st Week: Homework Assignment
