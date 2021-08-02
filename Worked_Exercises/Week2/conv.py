@@ -48,6 +48,7 @@ class Conv3x3:
         Returns a 3d numpy array with dimensions (h, w, num_filters).
         - input is a 2d numpy array
         '''
+        print('Step 1: Convolving the input image with num_filters')
         h, w = input.shape
 
         # initialize with zeros the output num_filters arrays (recall, output = filter * image)
