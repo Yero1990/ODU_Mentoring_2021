@@ -45,7 +45,7 @@ class MaxPool2:
         - input is a 3d numpy array with dimensions (h, w, num_filters)
         '''
 
-        print('Step 2: Pooling (h,w,num_filters) -> (h/2, w/2, num_filters)')
+        #print('Step 2: Pooling (h,w,num_filters) -> (h/2, w/2, num_filters)')
         
         h, w, num_filters = input.shape
         output = np.zeros((h // 2, w // 2, num_filters))

@@ -48,18 +48,19 @@ class Conv3x3:
         Returns a 3d numpy array with dimensions (h, w, num_filters).
         - input is a 2d numpy array
         '''
-        print('Step 1: Convolving the input image with num_filters')
+        #print('Step 1: Convolving the input image with num_filters')
         h, w = input.shape
 
         # initialize with zeros the output num_filters arrays (recall, output = filter * image)
         output = np.zeros((h-2, w-2, self.num_filters)) 
 
-        # loop of the the yield (im_region selected by filter at i,j steps, for a given input image
+        # loop of the im_region selected by filter at i,j steps, for a given input image
         for im_region, i, j in self.iterate_regions(input):
             #print('i, j steps --> ', i,', ', j)
             #print('im_region = ', im_region)
             #print('filter = ', self.filters)
-            output[i, j] = np.sum(im_region * self.filters, axis=(1, 2)) # fill matrix at [i,j] step by element-wise multiplication of (3x3) * (3x3x8)
+            # fill matrix at [i,j] step by element-wise multiplication of (3x3) * (3x3x8), and subsequent summing of the result
+            output[i, j] = np.sum(im_region * self.filters, axis=(1, 2)) 
         return output  # returns the output matrix (result of element-wise multiplication (not matrix multiplication) of
                        # image_region * filter, of dimensions 26x26x8)
     
