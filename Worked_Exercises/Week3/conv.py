@@ -48,6 +48,9 @@ class Conv3x3:
         Returns a 3d numpy array with dimensions (h, w, num_filters).
         - input is a 2d numpy array
         '''
+
+        self.last_input = input
+        
         #print('Step 1: Convolving the input image with num_filters')
         h, w = input.shape
 
@@ -64,16 +67,25 @@ class Conv3x3:
         return output  # returns the output matrix (result of element-wise multiplication (not matrix multiplication) of
                        # image_region * filter, of dimensions 26x26x8)
     
-# instantiate the Conv3x3 class
-#conv = Conv3x3(8)
+    def backprop(self, d_L_d_out, learn_rate):
+        '''
+        Performs a backward pass of the conv layer
+        - d_L_d_out is the loss gradient for this layer's outputs.
+        - learn_rate is a float
+        '''
 
-#print('number of filters = ', conv.num_filters)
-#print('matrices (filters) = ', conv.filters)
+        d_L_d_filters = np.zeros(self.filters.shape)
+        
+        for im_region, i, j in self.iterate_regions(self.last_input):
+            for f in range(self.num_filters):
+                d_L_d_filters[f] += d_L_d_out[i, j, f] * im_region
 
-# (testing) create a dummy image of nxn pixels from random numbers
-#image = np.random.rand(28,28) # (y, x) -> (height, width)
-#h, w = image.shape
-#print('h,w=',h,', ',w)
-#plt.imshow(image)
-#plt.show()
+        # Update filters
+        self.filters -= learn_rate * d_L_d_filters
 
+        # We aren't returning anything here since we use Conv3x3 as
+        # the first layer in our CNN. Otherwise, we'd need to return
+        # the loss gradient for this layer's inputs, just like every
+        # other layer in our CNN.
+        return None
+            

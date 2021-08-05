@@ -45,10 +45,14 @@ class MaxPool2:
         - input is a 3d numpy array with dimensions (h, w, num_filters)
         '''
 
+        # save input to be used in backprop
+        self.last_input = input
+        
         #print('Step 2: Pooling (h,w,num_filters) -> (h/2, w/2, num_filters)')
         
         h, w, num_filters = input.shape
-        output = np.zeros((h // 2, w // 2, num_filters))
+        #the floor division // rounds the result down to the nearest whole number
+        output = np.zeros((h // 2, w // 2, num_filters)) 
 
         # loop over each 2x2 pool at the (i,j) location of the image, and extract the max value out of said 2x2 pool
         for im_region, i, j in self.iterate_regions(input):
@@ -58,3 +62,30 @@ class MaxPool2:
             output[i, j] = np.amax(im_region, axis=(0,1))  
             
         return output
+
+
+    def backprop(self, d_L_d_out):
+        '''
+        Performs a backward pass of the maxpool layer.
+        Returns the loss gradient for this layer's inputs.
+        - d_L_d_out is the loss gradient for this layer's outputs
+        '''
+
+        # create an array of zeros with the shape before pooling was done
+        d_L_d_input = np.zeros(self.last_input.shape)
+
+        # loop over each region and get the maximum value if the pixel 
+        for im_region, i, j in self.iterate_regions(self.last_input):
+            h, w, f = im_region.shape
+            amax = np.amax(im_region, axis=(0,1)) # find the maximum only along (x,y -> h, w) axis
+
+            # loop over the multiple pixels in the image region
+            for i2 in range(h):
+                for j2 in range(w):
+                    for f2 in range(f):  # look at a given filter f2 for the (i2,j2)-th pixel
+                        # If this pixel was the max value, copy the gradient to it.
+                        if im_region[i2, j2, f2] == amax[f2]:
+                            d_L_d_input[i*2 + i2, j*2 + j2, f2] = d_L_d_out[i, j, f2]
+
+        return d_L_d_input  # returns the original shape before max. pooling, with all zeros except
+                            # pixels which had a max value in the pooling during the forward propagation 
