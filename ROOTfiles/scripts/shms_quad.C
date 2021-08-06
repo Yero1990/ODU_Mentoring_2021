@@ -39,8 +39,8 @@ void shms_quad(){
 
   // Define quads tuning (to be used in file naming)
   float Q1_arr[11] = {0.90, 0.92, 0.94, 0.96, 0.98, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10 }; 
-  float Q2_arr[6] = {0.95, 0.96, 0.97, 0.98, 0.99, 1.00};
-  float Q3_arr[6]  = {0.90, 0.92, 0.94, 0.96, 0.98, 1.00};
+  float Q2_arr[11] = {0.95, 0.96, 0.97, 0.98, 0.99, 1.00, 1.01, 1.02, 1.03, 1.04, 1.05 };
+  float Q3_arr[11] = {0.90, 0.92, 0.94, 0.96, 0.98, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10 };
   
   gStyle->SetPalette(1,0);
   gStyle->SetOptStat(1);
@@ -56,15 +56,15 @@ void shms_quad(){
 
   for(int q1=0; q1<11; q1++){
     
-    for(int q2=0; q2<6; q2++){
+    for(int q2=0; q2<11; q2++){
       
-      for(int q3=0; q3<6; q3++){
+      for(int q3=0; q3<11; q3++){
 
 	//Define object array to store histogram objects
 	TObjArray HList(0);
   
 	//Define input ROOT filename
-	inputroot =  basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f.root", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]);
+	inputroot =  "../" +basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + ".root";
 	
 	//Check if filename exists
 	Bool_t file_exists = !(gSystem->AccessPathName(inputroot));
@@ -73,7 +73,7 @@ void shms_quad(){
 	if(!file_exists) continue;
 	
 
-	outputhist="./"+inputroot+"_hist.root";
+	outputhist = "../" + basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + "_hist.root";
 	
 	TString htitle=basename;
 	TPaveLabel *title = new TPaveLabel(.15,.90,0.95,.99,htitle,"ndc");
