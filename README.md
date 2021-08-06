@@ -19,7 +19,7 @@ You can contact me via email if there is any questions or concerns regarding the
 <br>
 
 By the end of the program, each student will be expected to provide **a 2-4 page report 
-and/or a 5-10 min. oral presentation on their project.** The students are also encouraged to present a weekly 3-5 minute informal talk on thei progress of their research projects or topics they learned through the REYES program. <br>
+and/or a 5-10 min. oral presentation on their project.** The students are also encouraged to present a weekly 3-5 minute informal talk on their progress of their research projects or topics they learned through the REYES program. <br>
 See Program of Study for more information.
 
 Program of Study: [REYES Mentoring Program 2021: Expectations and Timeline](https://github.com/Yero1990/ODU_Mentoring_2021/blob/master/REYES_Mentoring_Program_Expectations_and_Timeline.pdf) <br>
