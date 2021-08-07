@@ -1,34 +1,12 @@
-#include <TSystem.h>
-#include <TString.h>
-#include "TFile.h"
-#include "TTree.h"
-#include <TNtuple.h>
-#include "TCanvas.h"
-#include <iostream>
-#include <fstream>
-#include "TMath.h"
-#include "TH1F.h"
-#include <TH2.h>
-#include <TStyle.h>
-#include <TGraph.h>
-#include <TROOT.h>
-#include <TMath.h>
-#include <TLegend.h>
-#include <TPaveLabel.h>
-#include <TProfile.h>
-#include <TObjArray.h>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include<math.h>
-using namespace std;
 
 /*
   This script reads an input file from optics data, and outputs 
-  .pdf and/or 2D focal plane histogram objects.
+  .pdf and/or 2D focal plane histogram objects. The data will be
+  used to train the convolutional neural network model. 
+
 */
 
-void shms_quad(){
+void make_2Doptics(){
 
   TString basename = "shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary";
   TString inputroot;
@@ -72,7 +50,7 @@ void shms_quad(){
 	//If filename does not exist, move on to next 
 	if(!file_exists) continue;
 	
-
+	//Create output ROOTfile name to store the 2D optics plots to be done
 	outputhist = "../ROOTfiles/" + basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + "_hist.root";
 	
 	TString htitle=basename;
@@ -116,22 +94,22 @@ void shms_quad(){
 	tsimc->SetBranchAddress("evtype",&evtyp);
 	
 	Int_t type =1;
-	TH2F *hxfp_yfp = new TH2F("hxfp_yfp", Form("Event type= %d ; Y_fp ; X_fp",type), 200,-20,20, 200, -10,10);
+	TH2F *hxfp_yfp  = new TH2F("hxfp_yfp",    Form("Event type= %d ; Y_fp ; X_fp",type),     200, -20, 20,  200, -10, 10);
 	HList.Add(hxfp_yfp);
 	
-	TH2F *hxfp_ypfp = new TH2F("hxfp_ypfp", Form("Event type= %d ; Yp_fp ; X_fp",type), 200,-.1,.1, 200, -10,10);
+	TH2F *hxfp_ypfp = new TH2F("hxfp_ypfp",   Form("Event type= %d ; Yp_fp ; X_fp",type),    200, -.1, .1,  200, -10, 10);
 	HList.Add(hxfp_ypfp);
 	
-	TH2F *hxfp_xpfp = new TH2F("hxfp_xpfp", Form("Event type= %d ; Xp_fp ; X_fp; ",type), 200,-.1,.1, 200, -10,10);
+	TH2F *hxfp_xpfp = new TH2F("hxfp_xpfp",   Form("Event type= %d ; Xp_fp ; X_fp; ",type),  200, -.1, .1,  200, -10, 10);
 	HList.Add(hxfp_xpfp);
 	
-	TH2F *hxpfp_yfp = new TH2F("hxpfp_yfp", Form("Event type = %d ; Y_fp ; Xp_fp; ",type), 200, -20,20, 200, -.1,.1);
+	TH2F *hxpfp_yfp = new TH2F("hxpfp_yfp",   Form("Event type = %d ; Y_fp ; Xp_fp; ",type), 200, -20, 20,  200, -.1, .1);
 	HList.Add(hxpfp_yfp);
 	
-	TH2F *hxpfp_ypfp = new TH2F("hxpfp_ypfp", Form("Event type = %d ;  Yp_fp ; Xp_fp",type), 200,-.1,.1, 200, -.1,.1);
+	TH2F *hxpfp_ypfp = new TH2F("hxpfp_ypfp", Form("Event type = %d ;  Yp_fp ; Xp_fp",type), 200, -.1, .1,  200, -.1, .1);
 	HList.Add(hxpfp_ypfp);
 	
-	TH2F *hypfp_yfp = new TH2F("hypfp_yfp", Form("Event type = %d ; Y_fp ; Yp_fp",type), 200, -20,20, 200, -.1,.1);
+	TH2F *hypfp_yfp = new TH2F("hypfp_yfp",   Form("Event type = %d ; Y_fp ; Yp_fp",type),   200, -20, 20,  200, -.1, .1);
 	HList.Add(hypfp_yfp);
 	
 	Long64_t nentries = tsimc->GetEntries();
@@ -141,15 +119,6 @@ void shms_quad(){
 	  tsimc->GetEntry(i);
 	  
 	  if (evtyp == type) {
-	    /*  #Fill (x, y), therefore xfp will be on X axis on plot and yfp will be on y-axis
-		# but from spec. coord. system, xfp should be vertical, therefore, we nned to flip
-	    hxfp_yfp->Fill(psxfp,psyfp);
-	    hxfp_ypfp->Fill(psxfp,psypfp);
-	    hxfp_xpfp->Fill(psxfp,psxpfp);
-	    hxpfp_ypfp->Fill(psxpfp,psypfp);
-	    hxpfp_yfp->Fill(psxpfp,psyfp);
-	    hypfp_yfp->Fill(psypfp,psyfp);
-	    */
 	    
 	    hxfp_yfp   ->Fill(psyfp,  psxfp);
 	    hxfp_ypfp  ->Fill(psypfp, psxfp);
