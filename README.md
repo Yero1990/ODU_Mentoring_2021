@@ -82,10 +82,18 @@ see github-examples: [fork-and-branch git workflow](https://blog.scottlowe.org/2
 `Second Week: August 09 - August 15, 2021` <br>
 
 * Discuss homework assignment from the First Week 
-  * I will help in solving any exercises the students had difficulty to complete 
-* Watch short (~8 min), informative YouTube video about Convolutional Neural Networks (see [CNNs video](https://www.youtube.com/watch?v=YRhxdVk_sIs)) <br>
-(This video describes the basics of CNNs via an example of the most popular application: image/pattern recognition, which is what this mentoring program is mainly about.)
+  * I will help in solving any exercises the students had difficulty to complete
+  
+* Help students setup GitHub upstream, as this is necessary for a collaborative project <br>
+ (start at Step 7 of [GitHub Docs: Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) )
+ 
+* Discuss with students about expectations about the research project to be written. 
+	* Help students install LaTeX (if they don't already have it installed) to facilitate the scientific writing process <br> (See [latex-installation](https://www.latex-project.org/get/) to install on Linux, Mac OS, Windows, or Online)
+	* Demonstrate an example of how to run latex, and push for students to start setting up their directories for writing the research paper and to  start setting up the structure of the paper, and writing their first sentences (at least the introductory part) 
+<p style='color:red'>It is highly recommended that students start the writing process early on, as it may take some time to get familiar with running and executing the LaTeX code and producing some results.</p>
 
+* Watch short (~8 min), informative YouTube video about Convolutional Neural Networks (see [CNNs video](https://www.youtube.com/watch?v=YRhxdVk_sIs)) <br>
+(This video describes the basics of CNNs via an example of the most popular application: image/pattern recognition, which is what this mentoring program is mainly about.) --DONE
 
  #### 2nd Week: Homework Assignment
 We will skip Part 2, as it is an introduction to Recurrent Neural Networks (RNNs) which is out of the scope of this program.  You can briefly read about RNNs if you are interested in its applications.
