@@ -1,0 +1,7 @@
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import numpy as np
+
+
+#read image file
+img = mpimg.imread('/Users/nuclear/Desktop/stinkbug.png')

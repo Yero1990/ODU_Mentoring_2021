@@ -1,0 +1,19 @@
+--------------------------------------
+Notes on Optimizing Spec. Quads Tunes
+Using Convolutional Neural Network
+--------------------------------------
+
+Nomenclature of tune config. (relative to 1)
+------------------------------
+Q1_1.00_Q2_1.05_Q3_1.00 ---> 0 %,   +5 %,   0 %
+Q1_1.00_Q2_1.00_Q3_0.96 ---> 0 %,    0 %,  -4 %
+
+
+1. Feed specific quad tunes (Q1,Q2,Q3) of a given plot (e.g. xfp vs. yfp)
+   and attach a label to it, say:  xfp_yfp_q1_q2_q3_tune1,
+
+2. The CNN will learn what each tune looks like and associate it with the pattern
+
+
+3. Once the network learns which pattern correesponds to which tune, it will be able to make
+   a future prediction of an unknown tune.
