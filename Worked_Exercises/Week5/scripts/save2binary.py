@@ -22,7 +22,7 @@ from matplotlib import rc
 rc('text', usetex=True)
 plt.rcParams["font.family"] = "Times New Roman"
 
-'''
+
 # Create empty arrays to store images and labels
 # (the purpose is to put our exp. data in similar format as MNIST data)
 imgArr      = []
@@ -36,8 +36,8 @@ for Q1 in np.arange(0.90, 1.12, 0.02):
     for Q2 in np.arange(0.95, 1.06, 0.01):
         for Q3 in np.arange(0.90, 1.12, 0.02):
 
-            # define file name
-            ifname = "../ROOTfiles/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.2f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
+            # define inputfile name
+            ifname = "../training_files/ROOTfiles/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.2f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
 
             # check if file exists
             if os.path.exists(ifname):
@@ -114,10 +114,10 @@ h5f.create_dataset('labels', data=labelArr)
 h5f.create_dataset('tunes', data=tuneConfArr)   
 h5f.close()
 
-'''    
-#---------------
-# Read HD5 file
-#---------------
+
+#--------------------
+# Read/plot HD5 file
+#--------------------
 # read  binary data images into array
 h5f = h5py.File('optics_training.h5', 'r')
 img = h5f['images']   # (186, 200, 200) 186 images of 200x200 pixels
