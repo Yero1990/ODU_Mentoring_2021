@@ -8,6 +8,8 @@
 
 void make_2Doptics(){
 
+  int file_type = 2;  // 1: training files, 2: test files
+  
   TString basename = "shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary";
   TString inputroot;
 
@@ -15,10 +17,15 @@ void make_2Doptics(){
   TString outputhist;
 	
 
-  // Define quads tuning (to be used in file naming)
+  // Define quads tuning of training files (to be used in file naming)  
   float Q1_arr[11] = {0.90, 0.92, 0.94, 0.96, 0.98, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10 }; 
   float Q2_arr[11] = {0.95, 0.96, 0.97, 0.98, 0.99, 1.00, 1.01, 1.02, 1.03, 1.04, 1.05 };
   float Q3_arr[11] = {0.90, 0.92, 0.94, 0.96, 0.98, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10 };
+
+
+  // Define quads tuning of tests files
+  float Q2test_arr[11] = {0.945, 0.955, 0.965, 0.975, 0.985, 0.995, 1.015, 1.025, 1.035, 1.045, 1.055};
+
   
   gStyle->SetPalette(1,0);
   gStyle->SetOptStat(1);
@@ -40,18 +47,33 @@ void make_2Doptics(){
 
 	//Define object array to store histogram objects
 	TObjArray HList(0);
-  
-	//Define input ROOT filename
-	inputroot =  "../ROOTfiles/" +basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + ".root";
+
+	if(file_type==1){
+	  //Define input ROOT filename
+	  inputroot =  "../ROOTfiles/training_files/" +basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + ".root";
+	}
+	else if(file_type==2){
+	  //Define input ROOT filename
+	  inputroot =  "../ROOTfiles/test_files/" +basename + Form("_Q1_%.2f_Q2_%.3f_Q3_%.2f", Q1_arr[q1], Q2test_arr[q2], Q3_arr[q3]) + ".root";
+	  cout << "filename = " << inputroot << endl;
+	}
 	
 	//Check if filename exists
 	Bool_t file_exists = !(gSystem->AccessPathName(inputroot));
+
 	
 	//If filename does not exist, move on to next 
 	if(!file_exists) continue;
-	
-	//Create output ROOTfile name to store the 2D optics plots to be done
-	outputhist = "../ROOTfiles/" + basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + "_hist.root";
+
+	if(file_type==1){
+	  //Create output ROOTfile name to store the 2D optics plots to be done
+	  outputhist = "../ROOTfiles/training_files/" + basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + "_hist.root";
+	}
+	else if(file_type==2){
+
+	  //Create output ROOTfile name to store the 2D optics plots to be done
+	  outputhist = "../ROOTfiles/test_files/" + basename + Form("_Q1_%.2f_Q2_%.3f_Q3_%.2f", Q1_arr[q1], Q2test_arr[q2], Q3_arr[q3]) + "_hist.root";
+	}
 	
 	TString htitle=basename;
 	TPaveLabel *title = new TPaveLabel(.15,.90,0.95,.99,htitle,"ndc");
