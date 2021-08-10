@@ -170,7 +170,8 @@ elif analysis == 'test_data':
         plt.imshow(true_img[idx], cmap='gray_r')
         plt.title(codecs.decode(true_tunes[idx]))
 
-        plt.show()
+        plt.savefig('image_pattern_%i.png'%idx)
+        
         
     #row2
     #plt.subplot(3, 2, 3) #left
