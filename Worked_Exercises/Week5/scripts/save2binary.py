@@ -22,6 +22,8 @@ from matplotlib import rc
 rc('text', usetex=True)
 plt.rcParams["font.family"] = "Times New Roman"
 
+data_type = 2   # 1: training data, 2: testing data
+
 
 # Create empty arrays to store images and labels
 # (the purpose is to put our exp. data in similar format as MNIST data)
@@ -31,14 +33,52 @@ tuneConfArr = []
 
 cnt = 0 # (image, Q1, Q2, Q3) image-tune counter
 
+# ---- define min/max stepsize for quad tuning ------
+
+if data_type==1:
+    # training range
+    q1_min = 0.90
+    q1_max = 1.12
+    q1_step = 0.02
+    
+    q2_min = 0.95
+    q2_max = 1.06
+    q2_step = 0.01
+    
+    q3_min = 0.90
+    q3_max = 1.12
+    q3_step = 0.02
+
+if data_type==2:
+    # testing range
+    q1_min = 1.00
+    q1_max = 1.0001
+    q1_step = 0.01
+    
+    q2_min = 0.955
+    q2_max = 1.065
+    q2_step = 0.01
+    
+    q3_min = 1.00
+    q3_max = 1.0001
+    q3_step = 0.01
+
+
+
 # Loop over each quad tune
-for Q1 in np.arange(0.90, 1.12, 0.02):
-    for Q2 in np.arange(0.95, 1.06, 0.01):
-        for Q3 in np.arange(0.90, 1.12, 0.02):
+for Q1 in np.arange(q1_min, q1_max, q1_step):
+    for Q2 in np.arange(q2_min, q2_max, q2_step):
+        for Q3 in np.arange(q3_min, q3_max, q3_step):
 
+            
             # define inputfile name
-            ifname = "../training_files/ROOTfiles/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.2f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
+            if data_type==1:
+                ifname = "../ROOTfiles/training_files/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.2f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
+            elif data_type==2:
+                ifname = "../ROOTfiles/test_files/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.3f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
+                print('fname = ', ifname)
 
+                
             # check if file exists
             if os.path.exists(ifname):
                 # Open ROOT file with histogram objects
@@ -46,14 +86,15 @@ for Q1 in np.arange(0.90, 1.12, 0.02):
             else:
                 continue
 
-            #print('fname = ', ifname)
-            #tune_config = 'Q1_%.2f%%_Q2_%.2f%%_Q3_%.2f%%' % ((1.-Q1)*100, (1.-Q2)*100, (1.-Q3)*100)
-            tune_config1 = '$x_{fp}$ vs. $y_{fp}$ \n Q1: %.2f, Q2: %.2f, Q3: %.2f' % (Q1, Q2, Q3)
-            tune_config2 = '$x_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.2f, Q2: %.2f, Q3: %.2f' % (Q1, Q2, Q3)
-            tune_config3 = '$x_{fp}$ vs. $x^{\prime}_{fp}$ \n Q1: %.2f, Q2: %.2f, Q3: %.2f' % (Q1, Q2, Q3)
-            tune_config4 = '$x^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.2f, Q2: %.2f, Q3: %.2f' % (Q1, Q2, Q3)
-            tune_config5 = '$x^{\prime}_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.2f, Q2: %.2f, Q3: %.2f' % (Q1, Q2, Q3)
-            tune_config6 = '$y^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.2f, Q2: %.2f, Q3: %.2f' % (Q1, Q2, Q3)
+            
+            print('fname = ', ifname)
+            #tune_config = 'Q1_%.3f%%_Q2_%.3f%%_Q3_%.3f%%' % ((1.-Q1)*100, (1.-Q2)*100, (1.-Q3)*100)
+            tune_config1 = '$x_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3)
+            tune_config2 = '$x_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3)
+            tune_config3 = '$x_{fp}$ vs. $x^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3)
+            tune_config4 = '$x^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3)
+            tune_config5 = '$x^{\prime}_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3)
+            tune_config6 = '$y^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3)
 
             
  
@@ -107,33 +148,49 @@ for Q1 in np.arange(0.90, 1.12, 0.02):
 
 
 
+            
 # Save data images in binary format
-h5f = h5py.File('optics_training.h5', 'w')
-h5f.create_dataset('images', data=imgArr)   
-h5f.create_dataset('labels', data=labelArr)   
-h5f.create_dataset('tunes', data=tuneConfArr)   
-h5f.close()
-
+if data_type==1:
+    h5f = h5py.File('optics_training.h5', 'w')
+    h5f.create_dataset('images', data=imgArr)   
+    h5f.create_dataset('labels', data=labelArr)   
+    h5f.create_dataset('tunes', data=tuneConfArr)   
+    h5f.close()
+    
+elif data_type==2:
+    h5f = h5py.File('optics_testing.h5', 'w')
+    h5f.create_dataset('images', data=imgArr)   
+    h5f.create_dataset('labels', data=labelArr)   
+    h5f.create_dataset('tunes', data=tuneConfArr)   
+    h5f.close()
 
 #--------------------
 # Read/plot HD5 file
 #--------------------
-# read  binary data images into array
-h5f = h5py.File('optics_training.h5', 'r')
-img = h5f['images']   # (186, 200, 200) 186 images of 200x200 pixels
-label = h5f['labels'] # (186, )   # 186 labels (or unique identifier for the image)
-tune = h5f['tunes']   # (186 )    # 186 tunes (actual array of strings specifying the image and its tune)
 
-    
+# read  binary data images into array
+
+if data_type==1:
+    h5f = h5py.File('optics_training.h5', 'r')
+    img = h5f['images']   # (186, 200, 200) 186 images of 200x200 pixels
+    label = h5f['labels'] # (186, )   # 186 labels (or unique identifier for the image)
+    tune = h5f['tunes']   # (186 )    # 186 tunes (actual array of strings specifying the image and its tune)
+
+elif data_type==2:
+    h5f = h5py.File('optics_testing.h5', 'r')
+    img = h5f['images']   # (186, 200, 200) 186 images of 200x200 pixels
+    label = h5f['labels'] # (186, )   # 186 labels (or unique identifier for the image)
+    tune = h5f['tunes']   # (186 )    # 186 tunes (actual array of strings specifying the image and its tune)
+
 
 # loop over each image, plot it and save (or display it)
 #for i in range(len(label)):
-    #    print('label = ', label[i], ' tune_config = ',tune[i])
-    #print(img[i])
-plt.imshow((img[185]), cmap='gray_r')  
-plt.title(codecs.decode(tune[185]))
+#    print('label = ', label[i], ' tune_config = ',tune[i])
+#    print(img[i])
+#plt.imshow((img[1]), cmap='gray_r')  
+#plt.title(codecs.decode(tune[185]))
 #plt.savefig('%s.pdf'%i)
-plt.show()
+#plt.show()
 
 
 '''
