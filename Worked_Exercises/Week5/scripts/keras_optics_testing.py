@@ -18,15 +18,22 @@ from tensorflow.keras.utils import to_categorical
 import codecs  # this module is used to decode binary strings to normal form
 
 # user input, to either traing the neural network, or test it
-analysis = 'train_data' 
-#analysis = 'test_data' 
+
+#analysis = 'train_data' 
+analysis = 'test_data' 
 
 # create empty lists to append arrays of data
 
 title = []
+
 train_images = []
 train_labels = []
 train_tunes = []
+
+test_images = []
+test_labels = []
+test_tunes = []
+
 history = []
 loss = []
 acc = []
@@ -37,42 +44,43 @@ acc = []
 f1 = h5py.File('optics_training_data.h5', 'r')
 
 # loop over each key
-for key in f1['images'].keys():
+for i, key in enumerate(f1['images'].keys()):
 
+    print('i = ',i,', key =', key)
+    print('sizeof f1[images][ikey] -> ',  f1['images'][key].shape)
     # append all training images/labels/tunes corresponding to each key (i.e., a key is: 'xfp_vs_yfp', or 'xpfp_vs_yfp', etc.) to a list
     train_images.append( f1['images'][key][:] )
     train_labels.append( f1['labels'][key][:] ) 
     train_tunes.append(  f1['tunes'][key][:] ) 
     title.append(key)
-    
-# Normalize the images (easier to work with small numbers than large numbers)
-for i in range(len(train_images)):
 
-    # access the ith set of train images and normalize
+    # normalize train images
     train_images[i] = (train_images[i] / 255) - 0.5
 
     # Reshape the images.
     train_images[i] = np.expand_dims(train_images[i], axis=3)
 
-    print(train_images[i].shape) # (60000, 28, 28, 1)
 
-
-'''
 # Open testing data binary data file
-f2 = h5py.File('optics_testing.h5', 'r')
+f2 = h5py.File('optics_testing_data.h5', 'r')
     
-test_images = f2['images'][:]  # mnist.train_images()
-test_labels = f2['labels'][:]  # mnist.train_labels()
-test_tunes  = f2['tunes'][:]   # not necessary for analysis, but helps to identify which image and tune it predicted (corresponding to a label)
+# loop over each key
+for i, key in enumerate(f2['images'].keys()):
 
-# Normalize the images (easier to work with small numbers than large numbers)
-test_images = (test_images / 255) - 0.5
+    print('i = ',i,', key =', key)
 
-# Reshape the images.
-test_images = np.expand_dims(test_images, axis=3)
+    # append all training images/labels/tunes corresponding to each key (i.e., a key is: 'xfp_vs_yfp', or 'xpfp_vs_yfp', etc.) to a list
+    test_images.append( f2['images'][key][:] )
+    test_labels.append( f2['labels'][key][:] ) 
+    test_tunes.append(  f2['tunes'][key][:] ) 
 
-print(test_images.shape) 
-'''
+    # normalize test images
+    test_images[i] = (test_images[i] / 255) - 0.5
+
+    # Reshape the images.
+    test_images[i] = np.expand_dims(test_images[i], axis=3)
+    
+    print('test_images_shape = ', test_images[i].shape) # (60000, 28, 28, 1)
     
 
 #--------------------------
@@ -110,7 +118,8 @@ if analysis == 'train_data':
     )
 
     color_arr = ['k', 'b', 'g', 'r', 'm', 'violet']
-    # loop over each of the 6 training set (set of images for xfp_vs_yfp, xpfp_vs_yfp, etc. . .)
+    
+    # loop over each of the 6 training sets (set of images for xfp_vs_yfp, xpfp_vs_yfp, etc. . .)
     for i, key in enumerate(f1['images'].keys()):
                             
         #--------------------
@@ -120,7 +129,7 @@ if analysis == 'train_data':
         ihist = model.fit(
             train_images[i],
             to_categorical(train_labels[i]),
-            epochs=5,
+            epochs=100,
             #validation_data=(test_images, to_categorical(test_labels)),
         )
         
@@ -156,77 +165,77 @@ if analysis == 'train_data':
     plt.legend()
     plt.show()
 
-'''
+
 elif analysis == 'test_data':
 
     # --------------------------------------------
     # Load the model's saved weights.
     # (assumes the weights have already been saved)
     # -------------------------------------------
+
+
+    # loop over each key type of images (i.e., xfp_vs_yfp, etc. . . )
+    for i, key in enumerate(f2['images'].keys()):
+
+        # load the optimized weights for each key
+        model.load_weights('optics_weights_%s.h5' % (key))
     
-    model.load_weights('optics_weights.h5')
+        # Predict labels of all test images per ith key
+        predictions = model.predict(test_images[i])
     
-    # Predict on the first 10 test images.
-    predictions = model.predict(test_images[:10])
+        # ---- Print our model's predictions -----
     
-    # ---- Print our model's predictions -----
-    
-    # print predicted label (max output probability corresponding to each of the input test_images)
-    predicted_labels = np.argmax(predictions, axis=1) 
-    predicted_img    = train_images[predicted_labels]
-    predicted_tunes  = train_tunes[predicted_labels] 
-
-    true_labels      = np.arange(predicted_labels.size)  # 1st 10 images
-    true_img    = test_images[true_labels]
-    true_tunes       = test_tunes[true_labels]
-    
-    print('keras model predictions = ', predicted_labels)
-
-    # plot precited (left plot) and trues (right plot) patterns
-
-
-    for idx in range(predicted_labels.size):
-
-        fig, ax = plt.subplots(1)
-
-        # left plot (predicted)
-        plt.subplot(1, 2, 1) 
-        plt.imshow(predicted_img[idx], cmap='gray_r')
-        plt.title(codecs.decode(predicted_tunes[idx]))
-        ax.text(5, 5, 'your legend', bbox={'facecolor': 'white', 'pad': 10})
-
-        # right plot (true)
-        plt.subplot(1, 2, 2) 
-        plt.imshow(true_img[idx], cmap='gray_r')
-        plt.title(codecs.decode(true_tunes[idx]))
-
-        plt.savefig('image_pattern_%i.png'%idx)
+        # print predicted label (max output probability corresponding to each of the input test_images)
+        predicted_labels = np.argmax(predictions, axis=1) 
+        predicted_img    = train_images[i][predicted_labels]
+        predicted_tunes  = train_tunes[i][predicted_labels] 
         
+        true_labels      = np.arange(predicted_labels.size)
+        true_img         = test_images[i][true_labels]
+        true_tunes       = test_tunes[i][true_labels]
+    
+        print('%s keras model predictions' % (key))
+        print('============================')
+        print('predicted_labels = ', predicted_labels)
+        print('predicted_images_shape = ', predicted_img.shape)
+        print('predicted_tunes_shape = ', predicted_tunes.shape)
         
-    #row2
-    #plt.subplot(3, 2, 3) #left
-    #plt.imshow(predicted_img[1], cmap='gray_r')
-    #plt.title(codecs.decode(predicted_tunes[1]))
+        print('----------------------------')
+        print('true_labels = ', true_labels)
+        print('true_images_shape = ', true_img.shape)
+        print('true_tunes_shape = ', true_tunes.shape)
 
-    #plt.subplot(3, 2, 4) # right
-    #plt.imshow(true_img[1], cmap='gray_r')
-    #plt.title(codecs.decode(true_tunes[1]))
+        fig, ax = plt.subplots(figsize=(12,12))
+        plt.subplots_adjust(left=0.01, bottom=0.025, right=0.99, top=0.95, wspace=0, hspace=0.4)
+        # create subplot figure
+        for idx in range(predicted_labels.size):
 
-    #row3
-    #plt.subplot(3, 2, 5) #left
-    #plt.imshow(predicted_img[2], cmap='gray_r')
-    #plt.title(codecs.decode(predicted_tunes[2]))
+            
+            #  idx   npad_odd = 2*(idx+1) - 1       npad_even = 2*idx + 2
+            #  0              1                     2
+            #  1              3                     4
+            #  2              5                     6
+            #  3              7                     8
 
-    #plt.subplot(3, 2, 6) # right
-    #plt.imshow(true_img[2], cmap='gray_r')
-    #plt.title(codecs.decode(true_tunes[2]))
+            # define pad numbering per idx to be: (1,2), (3,4), (5,6), . . . etc.  --> (npad_odd, npad_even) --> (predicted, true)
+            npad_odd = 2*(idx+1) - 1
+            npad_even = (2*idx) + 2
+            plt.suptitle(title[i])
+            # left plot (predicted)
+            plt.subplot(5, 4, npad_odd) 
+            plt.imshow(predicted_img[idx], cmap='gray_r')
+            plt.title(codecs.decode(predicted_tunes[idx]), fontsize=8)
+            plt.plot([], color='k', marker='', label='predicted')
+            plt.legend()
 
-    #plt.tight_layout()
-    #plt.show()
+            # right plot (true)
+            plt.subplot(5, 4, npad_even) 
+            plt.imshow(true_img[idx], cmap='gray_r')
+            plt.title(codecs.decode(true_tunes[idx]), fontsize=8)
+            plt.plot([], color='k', marker='', label='true')
+            plt.legend()
+
+        plt.savefig('final_results_%s.png'%(key), dpi=1000) # change the resolution of the saved image    
+        #plt.show()
         
-        
-    # Check our predictions against the ground truths.
-    #print('actual digits in images = 'test_labels[:5]) # [7, 2, 1, 0, 4]
 
-    # ------------------------------------------
-'''
