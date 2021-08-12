@@ -18,8 +18,8 @@ from tensorflow.keras.utils import to_categorical
 import codecs  # this module is used to decode binary strings to normal form
 
 # user input, to either traing the neural network, or test it
-#analysis = 'train_data' 
-analysis = 'test_data' 
+analysis = 'train_data' 
+#analysis = 'test_data' 
 
 # Open training data binary data file
 f1 = h5py.File('optics_training.h5', 'r')
@@ -72,7 +72,7 @@ model = Sequential([
     Conv2D(num_filters, filter_size, input_shape=(200, 200, 1)),
     MaxPooling2D(pool_size=pool_size),
     Flatten(),
-    Dense(186, activation='softmax'),
+    Dense(186, activation='softmax'), 
 ])
 
 
