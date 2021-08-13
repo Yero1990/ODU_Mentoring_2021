@@ -129,7 +129,7 @@ if analysis == 'train_data':
         ihist = model.fit(
             train_images[i],
             to_categorical(train_labels[i]),
-            epochs=100,
+            epochs=10,
             #validation_data=(test_images, to_categorical(test_labels)),
         )
         
