@@ -129,7 +129,7 @@ if analysis == 'train_data':
         ihist = model.fit(
             train_images[i],
             to_categorical(train_labels[i]),
-            epochs=100,
+            epochs=10,
             #validation_data=(test_images, to_categorical(test_labels)),
         )
         
@@ -235,7 +235,7 @@ elif analysis == 'test_data':
             plt.plot([], color='k', marker='', label='true')
             plt.legend()
 
-        plt.savefig('final_results_%s.png'%(key), dpi=1000) # change the resolution of the saved image    
+        plt.savefig('final_results_%s.png'%(key)) # change the resolution of the saved image    
         #plt.show()
         
 
