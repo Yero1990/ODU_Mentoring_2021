@@ -38,7 +38,6 @@ history = []
 loss = []
 acc = []
 
-#train_images.append()
 
 # Open training data binary data file
 f1 = h5py.File('optics_training_data.h5', 'r')
@@ -94,7 +93,7 @@ We’ll be using the simpler Sequential model, since our CNN will be a linear st
 '''
 
 
-num_filters = 8
+num_filters = 24
 filter_size = 3
 pool_size   = 2
 
@@ -129,7 +128,7 @@ if analysis == 'train_data':
         ihist = model.fit(
             train_images[i],
             to_categorical(train_labels[i]),
-            epochs=10,
+            epochs=100,
             #validation_data=(test_images, to_categorical(test_labels)),
         )
         
