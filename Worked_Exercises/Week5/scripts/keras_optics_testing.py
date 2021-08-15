@@ -93,8 +93,8 @@ We’ll be using the simpler Sequential model, since our CNN will be a linear st
 '''
 
 
-num_filters = 24
-filter_size = 3
+num_filters = 12
+filter_size = 6
 pool_size   = 2
 
 model = Sequential([

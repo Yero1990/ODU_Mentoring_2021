@@ -41,4 +41,4 @@ Directory Structure:
 
 Results: The studeis showed a slight improvement when num_filters = 12 was used as compared to 8 or 4
 When num_filters = 24 was used, it generated the EXACT same results as 12, so we will use num_filters = 12 as optimum
-parameter.
+parameter (and epochs=100, as determined from epochs_study)

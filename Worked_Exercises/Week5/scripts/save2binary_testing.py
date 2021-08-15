@@ -151,6 +151,8 @@ if data_type==1:
         h5f['labels'].create_dataset(key[i], data=labelDict[key[i]])   
         h5f['tunes'].create_dataset(key[i], data=tuneDict[key[i]])   
 
+        print(key[i])
+    print(h5f['images'].keys())
     h5f.close()
     
 elif data_type==2:
