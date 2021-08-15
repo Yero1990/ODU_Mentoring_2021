@@ -5,7 +5,7 @@ from matplotlib import rc
 rc('text', usetex=True)
 plt.rcParams["font.family"] = "Times New Roman"
 
-# accuracy
+# accuracy (for each epoch configuration) of image patters for each 2D focal plane plot
 xtick_labels = ['$x_{fp}$ vs $x^{\prime}_{fp}$', '$x_{fp}$ vs $y_{fp}$', '$x_{fp}$ vs $y^{\prime}_{fp}$', '$x^{\prime}_{fp}$ vs $y_{fp}$', '$x^{\prime}_{fp}$ vs $y^{\prime}_{fp}$', '$y^{\prime}_{fp}$ vs $y_{fp}$']
 xdata = [0, 1, 2, 3, 4, 5]
 acc_epoch10  = [0,   0.2, 0.2, 0.2, 0.1, 0.2]
