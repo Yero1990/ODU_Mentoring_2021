@@ -95,7 +95,7 @@ We’ll be using the simpler Sequential model, since our CNN will be a linear st
 
 num_filters = 12
 filter_size = 6
-pool_size   = 2
+pool_size   = 1
 
 model = Sequential([
     Conv2D(num_filters, filter_size, input_shape=(200, 200, 1)),
