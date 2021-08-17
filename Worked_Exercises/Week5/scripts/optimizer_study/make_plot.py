@@ -9,19 +9,18 @@ plt.rcParams["font.family"] = "Times New Roman"
 xtick_labels = ['$x_{fp}$ vs $x^{\prime}_{fp}$', '$x_{fp}$ vs $y_{fp}$', '$x_{fp}$ vs $y^{\prime}_{fp}$', '$x^{\prime}_{fp}$ vs $y_{fp}$', '$x^{\prime}_{fp}$ vs $y^{\prime}_{fp}$', '$y^{\prime}_{fp}$ vs $y_{fp}$']
 xdata = [0, 1, 2, 3, 4, 5]
 
-
-acc_poolsize1  = [0.9, 0.1, 0.8, 0.4, 0.9, 0.7 ]
-acc_poolsize2  = [0.8, 0.7, 1.0, 0.6, 1.0, 0.7 ]
-acc_poolsize4  = [0.9, 0.8, 1.0, 0.6, 1.0, 0.7 ]
-acc_poolsize6  = [0.9, 1.0, 1.0, 0.6, 1.0, 0.7 ]
-acc_poolsize8  = [0.8, 1.0, 1.0, 0.5, 1.0, 0.6 ]
+acc_adam    = [0.9, 1.0, 1.0, 0.6, 1.0, 0.7 ]
+acc_RMSprop = [0.8, 0.9, 1.0, 0.6, 1.0, 0.6 ]
+acc_SGD     = [0.5, 1.0, 0.8, 0.2, 0.1, 0.7 ]
+acc_Nadam   = [0.8, 0.8, 1.0, 0.6, 1.0, 0.7 ]
+acc_Adamax  = [0.8, 1.0, 1.0, 0.5, 0.6, 0.7 ]
 
 #plot data
-plt.plot(xdata, acc_poolsize1, linestyle='', marker='o', mfc='b', ms=8, color='b', label=r'pool\_size=1')
-plt.plot(xdata, acc_poolsize2, linestyle='', marker='^', mfc='g', ms=8, color='g', label=r'pool\_size=2')
-plt.plot(xdata, acc_poolsize4, linestyle='', marker='s',mfc='k', ms=8, color='k',  label=r'pool\_size=4')
-plt.plot(xdata, acc_poolsize6, linestyle='', marker='D',mfc='r', ms=8, color='r',  label=r'pool\_size=6')
-plt.plot(xdata, acc_poolsize8, linestyle='', marker='*',mfc='m', ms=8, color='m',  label=r'pool\_size=8')
+plt.plot(xdata, acc_RMSprop, linestyle='', marker='s',mfc='b', ms=8, color='b',  label=r'optimizer: RMSprop')
+plt.plot(xdata, acc_SGD, linestyle='', marker='o',mfc='g', ms=8, color='g',  label=r'optimizer: SGD')
+plt.plot(xdata, acc_Nadam, linestyle='', marker='^',mfc='m', ms=8, color='m',  label=r'optimizer: Nadam')
+plt.plot(xdata, acc_Adamax, linestyle='', marker='*',mfc='k', ms=8, color='k',  label=r'optimizer: Adamax')
+plt.plot(xdata, acc_adam, linestyle='', marker='D',mfc='r', ms=8, color='r',  label=r'optimizer: adam')
 
 # set tick labels, and rotate labels
 plt.xticks(xdata, xtick_labels, fontsize=16)

@@ -19,8 +19,8 @@ import codecs  # this module is used to decode binary strings to normal form
 
 # user input, to either traing the neural network, or test it
 
-#analysis = 'train_data' 
-analysis = 'test_data' 
+analysis = 'train_data' 
+#analysis = 'test_data' 
 
 # create empty lists to append arrays of data
 
@@ -93,9 +93,9 @@ We’ll be using the simpler Sequential model, since our CNN will be a linear st
 '''
 
 
-num_filters = 12
-filter_size = 6
-pool_size   = 1
+num_filters = 12   #optimum
+filter_size = 6    #optimum
+pool_size   = 6    #optimum
 
 model = Sequential([
     Conv2D(num_filters, filter_size, input_shape=(200, 200, 1)),
@@ -111,7 +111,7 @@ if analysis == 'train_data':
     # Compiling the Model
     #---------------------
     model.compile(
-        optimizer="adam",
+        optimizer="adam",    # adam, RMSprop, SGD, Nadam, Adamax ('adam' is the best optimizer for these studies)
         loss='categorical_crossentropy',
         metrics=['accuracy']
     )
