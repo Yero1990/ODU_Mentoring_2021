@@ -19,8 +19,8 @@ import codecs  # this module is used to decode binary strings to normal form
 
 # user input, to either traing the neural network, or test it
 
-analysis = 'train_data' 
-#analysis = 'test_data' 
+#analysis = 'train_data' 
+analysis = 'test_data' 
 
 # create empty lists to append arrays of data
 
