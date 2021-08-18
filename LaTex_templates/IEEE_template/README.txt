@@ -109,10 +109,24 @@ Example of how to start Main Body: (DO NOT COPY THE EXACT SAME SENTENCES, THIS I
 
 Briefly explaing or introduce the name of each layer used in the CNN,
 
-(briefly explain what each layer of the CNN did:  conv2d layer, maxpooling, softmax, etc.)
+briefly explain what each layer of the CNN did:  conv2d layer, maxpooling, softmax, etc.
+(You can divide this part into different subsections within the main body of the paper)
 
+**** (feel free to use the blog you have been reading as guide) ****
 
-You can divide this part into different subsections within the main body of the paper
+ Subsection: Convolutional Layer
+ Give brief description of what is a convolutional layer, and adapt the parameters that apply to the actual project you will be working on.
+ For example, rather than inputing a 28x28 pixel image, you would say you input a 200x200 pixel image,  number of filters (you will find all these
+ information when you actually run the keras code in Week5)
+
+ Subsection: Pooling Layes
+ Give brief description of what is a pooling layer and adapt the parameters,for examlple, what pooling size did you use
+ (you will find all these information when you actually run the keras code in Week5)
+
+ Subsection: Activation Function Layer
+ Give brief description of what is an activation function layer is and adapt the parameters,for examlple, what activation did you used? Softmax, then maybe just give
+ the formula for softmax, and explain that it outputs a vector with probabilities, and the highest probability is the actual network prediction, etc. 
+ (you will find all these information when you actually run the keras code in Week5)
 
 [Here you would put a picture of the CNN network layers used]  See image of Reference [2], which has a cartoon illustrating how the
 image was trasnformed at each step. You would have to adapt that image to include the actual size of the optics image used (200x200 pixels, rather than 28x28), and so on
