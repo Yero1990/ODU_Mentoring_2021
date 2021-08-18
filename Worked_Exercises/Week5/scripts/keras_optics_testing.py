@@ -38,7 +38,6 @@ history = []
 loss = []
 acc = []
 
-#train_images.append()
 
 # Open training data binary data file
 f1 = h5py.File('optics_training_data.h5', 'r')
@@ -94,9 +93,9 @@ We’ll be using the simpler Sequential model, since our CNN will be a linear st
 '''
 
 
-num_filters = 8
-filter_size = 3
-pool_size   = 2
+num_filters = 12   #optimum
+filter_size = 6    #optimum
+pool_size   = 6    #optimum
 
 model = Sequential([
     Conv2D(num_filters, filter_size, input_shape=(200, 200, 1)),
@@ -112,7 +111,7 @@ if analysis == 'train_data':
     # Compiling the Model
     #---------------------
     model.compile(
-        optimizer="adam",
+        optimizer="adam",    # adam, RMSprop, SGD, Nadam, Adamax ('adam' is the best optimizer for these studies)
         loss='categorical_crossentropy',
         metrics=['accuracy']
     )
@@ -235,7 +234,7 @@ elif analysis == 'test_data':
             plt.plot([], color='k', marker='', label='true')
             plt.legend()
 
-        plt.savefig('final_results_%s.png'%(key), dpi=1000) # change the resolution of the saved image    
+        plt.savefig('final_results_%s.png'%(key)) # change the resolution of the saved image    
         #plt.show()
         
 
