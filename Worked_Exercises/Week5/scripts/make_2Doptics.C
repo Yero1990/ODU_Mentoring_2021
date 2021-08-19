@@ -6,9 +6,14 @@
 
 */
 
-void make_2Doptics(){
+void make_2Doptics(int file_type=-1){
 
-  int file_type = 2;  // 1: training files, 2: test files
+  if(file_type==1){
+    cout << "Making 2D Optics Training Files . . ." << endl;
+  }
+  if(file_type==2){
+    cout << "Making 2D Optics Test Files . . ." << endl;
+  }
   
   TString basename = "shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary";
   TString inputroot;
@@ -67,12 +72,12 @@ void make_2Doptics(){
 
 	if(file_type==1){
 	  //Create output ROOTfile name to store the 2D optics plots to be done
-	  outputhist = "../ROOTfiles/training_files/" + basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]) + "_hist.root";
+	  outputhist = "../ROOTfiles/training_files/" + basename + Form("_Q1_%.2f_Q2_%.2f_Q3_%.2f_hist.root", Q1_arr[q1], Q2_arr[q2], Q3_arr[q3]);
 	}
 	else if(file_type==2){
 
 	  //Create output ROOTfile name to store the 2D optics plots to be done
-	  outputhist = "../ROOTfiles/test_files/" + basename + Form("_Q1_%.2f_Q2_%.3f_Q3_%.2f", Q1_arr[q1], Q2test_arr[q2], Q3_arr[q3]) + "_hist.root";
+	  outputhist = "../ROOTfiles/test_files/" + basename + Form("_Q1_%.2f_Q2_%.3f_Q3_%.2f_hist.root", Q1_arr[q1], Q2test_arr[q2], Q3_arr[q3]);
 	}
 	
 	TString htitle=basename;
@@ -116,22 +121,25 @@ void make_2Doptics(){
 	tsimc->SetBranchAddress("evtype",&evtyp);
 	
 	Int_t type =1;
-	TH2F *hxfp_yfp  = new TH2F("hxfp_yfp",    Form("Event type= %d ; Y_fp ; X_fp",type),     200, -20, 20,  200, -10, 10);
+
+	int pixels = 200;
+	
+	TH2F *hxfp_yfp  = new TH2F("hxfp_yfp",    Form("Event type= %d ; Y_fp ; X_fp",type),     pixels, -20, 20,  pixels, -10, 10);
 	HList.Add(hxfp_yfp);
 	
-	TH2F *hxfp_ypfp = new TH2F("hxfp_ypfp",   Form("Event type= %d ; Yp_fp ; X_fp",type),    200, -.1, .1,  200, -10, 10);
+	TH2F *hxfp_ypfp = new TH2F("hxfp_ypfp",   Form("Event type= %d ; Yp_fp ; X_fp",type),    pixels, -.1, .1,  pixels, -10, 10);
 	HList.Add(hxfp_ypfp);
 	
-	TH2F *hxfp_xpfp = new TH2F("hxfp_xpfp",   Form("Event type= %d ; Xp_fp ; X_fp; ",type),  200, -.1, .1,  200, -10, 10);
+	TH2F *hxfp_xpfp = new TH2F("hxfp_xpfp",   Form("Event type= %d ; Xp_fp ; X_fp; ",type),  pixels, -.1, .1,  pixels, -10, 10);
 	HList.Add(hxfp_xpfp);
 	
-	TH2F *hxpfp_yfp = new TH2F("hxpfp_yfp",   Form("Event type = %d ; Y_fp ; Xp_fp; ",type), 200, -20, 20,  200, -.1, .1);
+	TH2F *hxpfp_yfp = new TH2F("hxpfp_yfp",   Form("Event type = %d ; Y_fp ; Xp_fp; ",type), pixels, -20, 20,  pixels, -.1, .1);
 	HList.Add(hxpfp_yfp);
 	
-	TH2F *hxpfp_ypfp = new TH2F("hxpfp_ypfp", Form("Event type = %d ;  Yp_fp ; Xp_fp",type), 200, -.1, .1,  200, -.1, .1);
+	TH2F *hxpfp_ypfp = new TH2F("hxpfp_ypfp", Form("Event type = %d ;  Yp_fp ; Xp_fp",type), pixels, -.1, .1,  pixels, -.1, .1);
 	HList.Add(hxpfp_ypfp);
 	
-	TH2F *hypfp_yfp = new TH2F("hypfp_yfp",   Form("Event type = %d ; Y_fp ; Yp_fp",type),   200, -20, 20,  200, -.1, .1);
+	TH2F *hypfp_yfp = new TH2F("hypfp_yfp",   Form("Event type = %d ; Y_fp ; Yp_fp",type),   pixels, -20, 20,  pixels, -.1, .1);
 	HList.Add(hypfp_yfp);
 	
 	Long64_t nentries = tsimc->GetEntries();

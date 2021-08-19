@@ -42,5 +42,5 @@ Directory Structure:
 Results: The filter size did not affect the accuracy much, except for the highest filter size, 12x12,
 in which the accuracy of one of the 2D plots dripped dramatically, and overall, it was more difficult to
 achieve 100 % accuracy for most of the models.  The best or optimum filter size was determined to be
-filter_size = 6.  This is NOT much differenty from filter_size=3, however, there is one 2D focal plane plot
+filter_size = 6.  This is NOT much differently from filter_size=3, however, there is one 2D focal plane plot
 in which the accuracy improved when going from 3 to 6. 
