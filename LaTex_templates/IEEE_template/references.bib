@@ -1,0 +1,50 @@
+
+% General template formats for different references (you can also search online for latex reference types)
+% See https://www.bibtex.com/e/entry-types/
+
+% To cite a biliographic entry in this file (references.bib),
+% make sure that this file is included in the main_file.tex file you compile
+% (where main_file.tex is replaced with whichever name you used)
+% >>  \bibliography{references}
+% >>  \bibliographystyle{IEEEtran}  %this line sets the bibliography style
+
+
+% Each time a new bibliography entry is added to this file, and/or a reference is cites in the document (\cite{ref_key}, do the following:
+% 1. pdflatex main_file.tex   (this updates the corresponding main_file.aux file with the new bib entry)
+% 2. bibtex main_file.aux     (run bibtex on the auxilary file: bibtex is a reference management software)
+%                              this command also creates a .bbl file, with ONLY the cited references sorted either alphabetically or by citation
+% 3. pdflatex main_file.tex   (run this command two times, the reason is explained in reference:
+% Reference:  https://www.systutorials.com/why-do-i-need-to-run-latex-bibtex-three-times-to-make-everything-look-good/)
+
+
+% Article template
+@article{CitekeyArticle,
+  author   = {P. J. Cohen},
+  title    = {The independence of the continuum hypothesis},
+  journal  = {Proceedings of the National Academy of Sciences},
+  year     = {1963},
+  volume   = {50},
+  number   = {6},
+  pages    = {1143--1148}
+}
+
+
+% Book template 
+@book{CitekeyBook,
+  author    = {Leonard Susskind and George Hrabovsky},
+  title     = {Classical mechanics: the theoretical minimum},
+  publisher = {Penguin Random House},
+  address   = {New York, NY},
+  year      = {2014}
+}
+
+% Online template
+@online{WinNT,
+  author  = {MultiMedia LLC},
+  title   =  {{MS Windows NT} Kernel Description},
+  year    = {1999},
+  url     = {http://web.archive.org/web/20080207010024/http://www.808multimedia.com/winnt/kernel.htm},
+  urldate = {2010-09-30}
+}
+
+

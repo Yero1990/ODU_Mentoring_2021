@@ -32,4 +32,6 @@ variable parameters:
 epochs = 10, 50 or 100
 
 
-
+Results: The studeis showed an improvement in the accuracy when the epochs was incresed from 10 to 50, whereas from
+50 to 100, there was only a slight improvement, since the accuracy started to plateau at abour 50 epochs.
+We will choose 100 epochs as optimum paramter to use for our next study (number of  convolutional filters study)
