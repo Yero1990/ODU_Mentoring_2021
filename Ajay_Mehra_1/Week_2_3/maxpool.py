@@ -1,3 +1,4 @@
+#Maxpool's function forward takes 26*26*8 input and do maxpool and return 13*13*8 array.
 import numpy as np
 class max_pool:
     def iterate_regions(self,image):

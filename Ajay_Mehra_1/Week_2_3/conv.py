@@ -1,3 +1,7 @@
+# Conv.py takes input number of filters and its function forward takes the image array as input and 
+# overall returns 3d array with filters applied,
+# input : 8   28*28 array
+# Output: 26*26*8 array
 import numpy as np
 class conv3x3:
     def __init__(self,num_filters):
