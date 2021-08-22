@@ -34,7 +34,7 @@ class Softmax:
         return exp/np.sum(exp, axis=0)
 
 
-    def backdrop(self, d_L_d_out):
+    def backprop(self, d_L_d_out, learn_rate):
 
         ''' Performs a backward pass of the softmax layer.
         Returns the loss gradient for this layer's inputs.
