@@ -115,6 +115,9 @@ We will skip Part 2, as it is an introduction to Recurrent Neural Networks (RNNs
 
 * Discuss homework assignment from the Third Week 
   * I will help in solving any exercises the students had difficulty to complete 
+* Discuss about the research paper content (and do some examples of how to add bibliography)
+* Discuss or briefly mention the Keras code in Week 4 homework assignment, and remind students <br>
+  there are worked out examples in the Worked_Exercises/Week4 directory
 
  #### 4th Week: Homework Assignment
 * Read and work out the exercises/examples discussed in the Keras for Beginners series: <br>
