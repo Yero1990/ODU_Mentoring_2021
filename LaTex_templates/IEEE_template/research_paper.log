@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  19 AUG 2021 12:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 AUG 2021 14:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**conference_101719.tex
-(./conference_101719.tex
+**research_paper.tex
+(./research_paper.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-03-06> (./IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
@@ -250,8 +250,8 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count198
 \l__pdf_internal_box=\box49
 )
-(./conference_101719.aux)
-\openout1 = `conference_101719.aux'.
+(./research_paper.aux)
+\openout1 = `research_paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
@@ -304,9 +304,12 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 57.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-27.
 
+
+LaTeX Warning: Reference `' on page 1 undefined on input line 75.
+
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+29.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
@@ -314,49 +317,49 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 ]
 
-LaTeX Warning: Citation `b7' on page 2 undefined on input line 176.
+LaTeX Warning: Citation `b7' on page 2 undefined on input line 178.
 
 <images/fig1.png, id=14, 82.1469pt x 71.5473pt>
 File: images/fig1.png Graphic file (type png)
 <use images/fig1.png>
-Package pdftex.def Info: images/fig1.png  used on input line 232.
+Package pdftex.def Info: images/fig1.png  used on input line 234.
 (pdftex.def)             Requested size: 82.14668pt x 71.5471pt.
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
-43.
+45.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 243.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 245.
  [2]
 
-LaTeX Warning: Citation `b1' on page 3 undefined on input line 256.
+LaTeX Warning: Citation `b1' on page 3 undefined on input line 258.
 
 
-LaTeX Warning: Citation `b2' on page 3 undefined on input line 257.
+LaTeX Warning: Citation `b2' on page 3 undefined on input line 259.
 
 
-LaTeX Warning: Citation `b3' on page 3 undefined on input line 258.
+LaTeX Warning: Citation `b3' on page 3 undefined on input line 260.
 
 
-LaTeX Warning: Citation `b3' on page 3 undefined on input line 258.
+LaTeX Warning: Citation `b3' on page 3 undefined on input line 260.
 
 
-LaTeX Warning: Citation `b3' on page 3 undefined on input line 258.
+LaTeX Warning: Citation `b3' on page 3 undefined on input line 260.
 
 
-LaTeX Warning: Citation `b3' on page 3 undefined on input line 259.
+LaTeX Warning: Citation `b3' on page 3 undefined on input line 261.
 
 
-LaTeX Warning: Citation `b4' on page 3 undefined on input line 267.
+LaTeX Warning: Citation `b4' on page 3 undefined on input line 269.
 
 
-LaTeX Warning: Citation `b5' on page 3 undefined on input line 268.
+LaTeX Warning: Citation `b5' on page 3 undefined on input line 270.
 
 
-LaTeX Warning: Citation `b6' on page 3 undefined on input line 273.
+LaTeX Warning: Citation `b6' on page 3 undefined on input line 275.
 
-(./conference_101719.bbl)
+(./research_paper.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -370,19 +373,19 @@ Before submitting the final camera ready copy, remember to:
 
 [3
 
- <./images/fig1.png (PNG copy)>] (./conference_101719.aux)
+ <./images/fig1.png (PNG copy)>] (./research_paper.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3953 strings out of 480608
- 56705 string characters out of 5903631
- 307194 words of memory out of 5000000
- 19792 multiletter control sequences out of 15000+600000
+ 3955 strings out of 480608
+ 56681 string characters out of 5903631
+ 307188 words of memory out of 5000000
+ 19794 multiletter control sequences out of 15000+600000
  584579 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,11n,37p,588b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,11n,37p,585b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -395,7 +398,7 @@ st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/t
 ype1/urw/times/utmbi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on conference_101719.pdf (3 pages, 125539 bytes).
+Output written on research_paper.pdf (3 pages, 126494 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream

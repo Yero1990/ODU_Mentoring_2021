@@ -11,15 +11,15 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Conference Paper Title*\\
+\title{Research Paper Title*\\
 {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+\author{\IEEEauthorblockN{1\textsuperscript{st} Name Surname}
+\IEEEauthorblockA{\textit{Department Name} \\
+\textit{University Name}\\
 City, Country \\
 email address or ORCID}
 %\and
@@ -58,19 +58,24 @@ email address or ORCID}
 
 \begin{abstract}
 This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
+*CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, or Math in Paper Title or Abstract.
+Often only 100 to 300 words, the abstract generally provides a broad overview and is never more than a page.
+It describes the essence, the main theme of the paper. It includes the research question posed, its significance,
+the methodology, and the main results or findings. Remember to take great care in composing the abstract. It's the
+first part of the paper the instructor reads. It must impress with a strong content, good style, and general aesthetic appeal.
 \end{abstract}
 
-\begin{IEEEkeywords}
-component, formatting, style, styling, insert
-\end{IEEEkeywords}
+%\begin{IEEEkeywords}
+% Here you would put keywords that may be important to follow in the paper (maybe repeated terms of importance, e.g. neural networks, convolution, )
+%\end{IEEEkeywords}
 
 \section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+A good introduction states the main research problem and thesis argument. What precisely are you studying
+and why is it important? How original is it? Will it fill a gap in other studies? Never provide a lengthy
+justification for your topic before it has been explicitly stated. Example of inserting a Figure, See Fig.\ref{}.
+\cite{NNPart1_VZ_2019}
 
-\section{Ease of Use}
+\section{Methodology}
 
 \subsection{Maintaining the Integrity of the Specifications}
 
@@ -83,14 +88,11 @@ as one part of the entire proceedings, and not as an independent document.
 Please do not revise any of the current designations.
 
 \section{Prepare Your Paper Before Styling}
-Before you begin to format your paper, first write and save the content as a 
-separate text file. Complete all content and organizational editing before 
-formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
-proofreading, spelling and grammar.
+This is the main body of the paper
 
-Keep your text and graphic files separate until after the text has been 
-formatted and styled. Do not number text heads---{\LaTeX} will do that 
-for you.
+\subsection{Convolutional Layer}
+Write 2-3 sentences explaining what this layer does.
+
 
 \subsection{Abbreviations and Acronyms}\label{AA}
 Define abbreviations and acronyms the first time they are used in the text, 
@@ -272,7 +274,8 @@ element symbols.
 For papers published in translation journals, please give the English 
 citation first, followed by the original foreign-language citation \cite{b6}.
 
-Test cite:  \cite{CitekeyArticle}
+You are writing your paper, see Ref.\cite{my_article}
+
 
 
 %\begin{thebibliography}{00}

@@ -21,8 +21,15 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{CitekeyArticle}
-P.~J. Cohen, ``The independence of the continuum hypothesis,''
+\bibitem{NNPart1_VZ_2019}
+\BIBentryALTinterwordspacing
+V.~Zhou. (2019) {Machine Learning for Beginners: An Introduction to Neural
+  Networks}. (Accessed on 2012-03-20). [Online]. Available:
+  \url{https://victorzhou.com/blog/intro-to-neural-networks/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{my_article}
+F.~LastName, ``The independence of the continuum hypothesis,''
   \emph{Proceedings of the National Academy of Sciences}, vol.~50, no.~6, pp.
   1143--1148, 1963.
 

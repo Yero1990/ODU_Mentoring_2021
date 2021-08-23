@@ -48,7 +48,8 @@ actual brain works to make decisions using its complex system of inter-connected
 [Here you would put a picture, to illustarte the point]
 
 This research study uses a class of ANNs, known as Convolutional Neural Networks (CNNs) in order to study and analyze visual
-imagery. The logic of how a CNN work is as follows [1]:   (Note I gave a reference [1] to refer to the steps described in the "Neural Networks: Main Concepts" section of the cited [1] article)
+imagery. The logic of how a CNN work is as follows [1]:   (Note I gave a reference [1]
+to refer to the steps described in the "Neural Networks: Main Concepts" section of the cited [1] article)
 
      1)  Read the input data (2D array of image to be analyzed)
      2)  Make a prediction (after data has passed through all network layers)
