@@ -153,16 +153,14 @@ if analysis == 'train_data':
     
         # Plot the accuracy and loss vs. epochs to determine how well the network has been trained
             
-        ith_loss = np.array(history[i].history['loss'])/100.
+        ith_loss = np.array(history[i].history['loss'])
         ith_acc = np.array(history[i].history['accuracy'])
 
         loss.append(ith_loss)
         acc.append(ith_acc)
         
         plt.plot(acc[i], linestyle='-',   color=color_arr[i],  label='accuracy: '+title[i])
-        plt.plot(loss[i], linestyle='--', color=color_arr[i],  label='loss: '+title[i])
-
-    
+        plt.plot(loss[i], linestyle='--', color=color_arr[i],  label='loss: '+title[i])    
     
     plt.title('Model Performance')
     plt.ylabel('accuracy, loss')
@@ -250,7 +248,7 @@ elif analysis == 'test_data':
 
             # calculate the difference between the predicted and true [Q1,Q2,Q3] tunes
             # for now, the requirement for a VALID prediction is: a difference of at most 0.005 is allowed for either Q1, Q2, Q3
-            diff = np.abs(predicted_tunes[idx] - true_tunes[idx])
+            diff = np.round(np.abs(predicted_tunes[idx] - true_tunes[idx]), 4)
             print('Q1_pred - Q1_true = %.3f, Q2_pred - Q2_true = %.3f, Q3_pred - Q3_true = %.3f' % (diff[0], diff[1], diff[2]))
             print('diff = ', diff)
             
