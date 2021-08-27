@@ -48,7 +48,8 @@ actual brain works to make decisions using its complex system of inter-connected
 [Here you would put a picture, to illustarte the point]
 
 This research study uses a class of ANNs, known as Convolutional Neural Networks (CNNs) in order to study and analyze visual
-imagery. The logic of how a CNN work is as follows [1]:   (Note I gave a reference [1] to refer to the steps described in the "Neural Networks: Main Concepts" section of the cited [1] article)
+imagery. The logic of how a CNN work is as follows [1]:   (Note I gave a reference [1]
+to refer to the steps described in the "Neural Networks: Main Concepts" section of the cited [1] article)
 
      1)  Read the input data (2D array of image to be analyzed)
      2)  Make a prediction (after data has passed through all network layers)
@@ -84,14 +85,28 @@ Q3    [0.90, 1.10]      0.02       |
 ------------------------------------
 Table 1: SHMS Quadrupoles Optics Tunes Configurations (training data) .
 
-
-The optics patters for testing consisted of only varying Q2 from 0.945 to 1.055 in steps of 0.01, while
-keeping Q1 and Q3 tunes fixed at unity. 
-
-** Keep explaining what you did, for example, describe the actual parameters used in Keras, such as:
-
 Each of the six 2D SHMS optics pattern correlations were trained separately, using 31 different optics tunes
-per correlation plot. . . .
+per correlation plot which give a total of 6x31=185 images.
+
+The optics patters for testing the network consisted of only varying Q2 from 0.945 to 1.055 in steps of 0.01, while
+keeping Q1 and Q3 tunes fixed at unity.
+
+To test the neural network after it had been trained, a set of 10 images were used for each 2D optics correlation, where Q1 and Q3
+tunes were kept fixed at unity while Q2 was varied from 0.955 to 1.055 in steps of 0.01 for a total of 10 Q2 tunes.
+
+++++++++++++++++++++++++++++
+** IMPORTANT: Keep explaining what you did, or how was the data collected (I CAN HELP WITH THIS SINCE I WROTE THE CODES TO EXTRACT THE DATA IMAGES)
+(See paragraph below, where I expalined roughly what I actually did. You can write this part as it is, and then put a citation that you got this
+information through me. For example:  [3] Private communication. C. Yero. August 2021. (there is a template of how to do this in references.bib of Latex_Templates/IEEE directory.)
+++++++++++++++++++++++++++++
+
+
+The data with specific [Q1,Q2,Q3] tunes were simulated using the standard Hall C simulation program (mc-single-arm)
+and the raw data output was written to a ROOTfile. A separate ROOT C++ script (make_2Doptics.C) was used to form each of
+the six abovementioned 2D focal plane correlations correlations which were stored in a separate ROOTfile as histogram objects.
+The 2D histograms were then converted to a 2D pixelated array and stored in binary format (.h5) via a Python code (save2binary.py)
+array to be read by the Neural Network using Python Keras. Each optics image used was 200x200 pixels and was passed thorugh each of
+the hidden layers of the network described in Section 4 of this article.
 
 
 **************
@@ -119,7 +134,7 @@ briefly explain what each layer of the CNN did:  conv2d layer, maxpooling, softm
  For example, rather than inputing a 28x28 pixel image, you would say you input a 200x200 pixel image,  number of filters (you will find all these
  information when you actually run the keras code in Week5)
 
- Subsection: Pooling Layes
+ Subsection: Pooling Layer
  Give brief description of what is a pooling layer and adapt the parameters,for examlple, what pooling size did you use
  (you will find all these information when you actually run the keras code in Week5)
 
@@ -132,6 +147,11 @@ briefly explain what each layer of the CNN did:  conv2d layer, maxpooling, softm
 image was trasnformed at each step. You would have to adapt that image to include the actual size of the optics image used (200x200 pixels, rather than 28x28), and so on
 
 
+**IMPORTANT:  Don't worry about putting the details of the math (partial derivatives) that was done to actually carry out the forward/bacpropagation of the neural network.
+Just focus on explaining the basics of each layer used, and just mention that once the image passed through the layers, the output was compared to the known result, and
+a backpropagation method was done to minimize the loss by determining the optimum parameters. And mention that an epoch consists of a complete forward/backward propagation.
+Then, the images were re-analyzed with the updated parameters in subsequent epochs to further optimize the parameters and minimize the loss.  ** You'll probably have to also
+give a brief 1-sentence description of what the loss is in a neural network.
 
 ***************************
 5. Results and Discussion
