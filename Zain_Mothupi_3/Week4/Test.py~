@@ -1,0 +1,29 @@
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+
+num_filters = 8
+filter_size = 3
+pool_size = 2
+
+# Build the model.
+model = Sequential([
+  Conv2D(num_filters, filter_size, input_shape=(28, 28, 1)),
+  MaxPooling2D(pool_size=pool_size),
+  Flatten(),
+  Dense(10, activation='softmax'),
+])
+
+# Load the model's saved weights.
+model.load_weights('cnn.h5')
+
+''' Using the trained model to make predictions is easy: we pass an array of inputs to predict() and it returns an array of outputs.
+    Keep in mind that the output of our network is 10 probabilities so we'll use np.argmax() to turn those into actual digits '''
+
+# Predict the first 5 test images.
+predictions = model.predict(test_images[:5])
+
+#Print our model's predictions
+print(np.argmax(predictions, axis=1)) #[7,2,1,0,4)
+
+# Check our predictions against the ground truths
+print(test_labels[:5]) # [7,2,1,0,4]
