@@ -31,13 +31,14 @@ plt.rcParams["font.family"] = "Times New Roman"
 #-------------
 # USER INPUT
 #-------------
-data_type = 'training'  
+data_type = 'test'   # User Input: 'training' or 'test'  
 
 
 # Create empty dictionaryarrays to store images, labels and tunes
 # (the purpose is to put our exp. data in similar format as MNIST data)
 imgDict   = {}
 labelDict = {}
+titleDict  = {}
 tuneDict  = {}
 
 # list of key names for each 2d focal plane plot 
@@ -132,13 +133,21 @@ for Q1 in np.arange(q1_min, q1_max, q1_step):
             labelDict.setdefault(key[4],[]).append(cnt)
             labelDict.setdefault(key[5],[]).append(cnt)
 
+            # append numerical values for each of the quads tunes
+            tuneDict.setdefault(key[0],[]).append(np.array([Q1, Q2, Q3]))
+            tuneDict.setdefault(key[1],[]).append(np.array([Q1, Q2, Q3]))
+            tuneDict.setdefault(key[2],[]).append(np.array([Q1, Q2, Q3]))
+            tuneDict.setdefault(key[3],[]).append(np.array([Q1, Q2, Q3]))
+            tuneDict.setdefault(key[4],[]).append(np.array([Q1, Q2, Q3]))
+            tuneDict.setdefault(key[5],[]).append(np.array([Q1, Q2, Q3]))
+
             # append title-like description, and specify the (Q1,Q2,Q3) config for each individual 2d focal plane plot
-            tuneDict.setdefault(key[0],[]).append('$x_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
-            tuneDict.setdefault(key[1],[]).append('$x_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
-            tuneDict.setdefault(key[2],[]).append('$x_{fp}$ vs. $x^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
-            tuneDict.setdefault(key[3],[]).append('$x^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
-            tuneDict.setdefault(key[4],[]).append('$x^{\prime}_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
-            tuneDict.setdefault(key[5],[]).append('$y^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
+            titleDict.setdefault(key[0],[]).append('$x_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
+            titleDict.setdefault(key[1],[]).append('$x_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
+            titleDict.setdefault(key[2],[]).append('$x_{fp}$ vs. $x^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
+            titleDict.setdefault(key[3],[]).append('$x^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
+            titleDict.setdefault(key[4],[]).append('$x^{\prime}_{fp}$ vs. $y^{\prime}_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
+            titleDict.setdefault(key[5],[]).append('$y^{\prime}_{fp}$ vs. $y_{fp}$ \n Q1: %.3f, Q2: %.3f, Q3: %.3f' % (Q1, Q2, Q3))
 
             # increment counter for each distinct (Q1, Q2, Q3) configuration
             cnt = cnt+1
@@ -147,37 +156,25 @@ for Q1 in np.arange(q1_min, q1_max, q1_step):
 # Save data images in binary format
 if data_type=='training':
     h5f = h5py.File('optics_training.h5', 'w')
-
-    # create groups to store hierarchichal data
-    h5f.create_group('images')
-    h5f.create_group('labels')
-    h5f.create_group('tunes')
-
-    # loop over each key element and add the dictionary values to each group
-    for i in range(len(key)):
-
-        h5f['images'].create_dataset(key[i], data=imgDict[key[i]])   
-        h5f['labels'].create_dataset(key[i], data=labelDict[key[i]])   
-        h5f['tunes'].create_dataset(key[i], data=tuneDict[key[i]])   
-
-    h5f.close()
-    
 elif data_type=='test':
     h5f = h5py.File('optics_test.h5', 'w')
+    
+# create groups to store hierarchichal data
+h5f.create_group('images')
+h5f.create_group('labels')
+h5f.create_group('tunes')
+h5f.create_group('titles')
 
-    # create groups to store hierarchichal data
-    h5f.create_group('images')
-    h5f.create_group('labels')
-    h5f.create_group('tunes')
-
-    # loop over each key element and add the dictionary values to each group
-    for i in range(len(key)):
-
-        h5f['images'].create_dataset(key[i], data=imgDict[key[i]])   
-        h5f['labels'].create_dataset(key[i], data=labelDict[key[i]])   
-        h5f['tunes'].create_dataset(key[i], data=tuneDict[key[i]])   
-
-    h5f.close()
+# loop over each key element and add the dictionary values to each group
+for i in range(len(key)):
+    
+    h5f['images'].create_dataset(key[i], data=imgDict[key[i]])   
+    h5f['labels'].create_dataset(key[i], data=labelDict[key[i]])   
+    h5f['tunes'].create_dataset(key[i], data=tuneDict[key[i]])   
+    h5f['titles'].create_dataset(key[i], data=titleDict[key[i]])   
+    
+h5f.close()
+    
 
 
 #-------------------------------
@@ -215,25 +212,48 @@ if data_type=='training':
     print('print: h5f[\'labels\'][\'xfp_vs_xpfp\']')
     print(h5f['labels']['xfp_vs_xpfp'])
     print('There are ', h5f['labels']['xfp_vs_xpfp'].shape, ' possible distinct image labels (or equivalently, outcomes)')
-    
+
+    print('---------------------')
+    print('print: h5f[\'tunes\'].keys()')
+    print(h5f['tunes'].keys())
+    print('---------------------')
+
+    print('---------------------')
+    print('print: h5f[\'tunes\'][\'xfp_vs_xpfp\']')
+    print(h5f['tunes']['xfp_vs_xpfp'])
+    print('print: h5f[\'tunes\'][\'xfp_vs_xpfp\'][0]')
+    print('[Q1,Q2,Q3] Tunes of image [0]= ', h5f['tunes']['xfp_vs_xpfp'][0])
+    print('---------------------')
+
+    print('---------------------')
+    print('print: h5f[\'titles\'].keys()')
+    print(h5f['titles'].keys())
+    print('---------------------')
+
+    print('---------------------')
+    print('print: h5f[\'titles\'][\'xfp_vs_xpfp\']')
+    print(h5f['titles']['xfp_vs_xpfp'])
+    print('print: h5f[\'titles\'][\'xfp_vs_xpfp\'][0]')
+    print('Plot Title of image [0]: ', h5f['titles']['xfp_vs_xpfp'][0])
+
     
 #    img = h5f['images']['']   # (186, 200, 200) 186 images of 200x200 pixels
 #    label = h5f['labels'][''] # (186, )   # 186 labels (or unique identifier for the image)
-#    tune = h5f['tunes']['']   # (186 )    # 186 tunes (actual array of strings specifying the image and its tune)
+#    title = h5f['titles']['']   # (186 )    # 186 titles (actual array of strings specifying the image and its title)
 
 #elif data_type=='test':
 #    h5f = h5py.File('optics_testing.h5', 'r')
 #    img = h5f['images']   # (186, 200, 200) 186 images of 200x200 pixels
 #    label = h5f['labels'] # (186, )   # 186 labels (or unique identifier for the image)
-#    tune = h5f['tunes']   # (186 )    # 186 tunes (actual array of strings specifying the image and its tune)
+#    title = h5f['titles']   # (186 )    # 186 titles (actual array of strings specifying the image and its title)
 
 
 # loop over each image, plot it and save (or display it)
 #for i in range(len(label)):
-#    print('label = ', label[i], ' tune_config = ',tune[i])
+#    print('label = ', label[i], ' title_config = ',title[i])
 #    print(img[i])
 #plt.imshow((img[1]), cmap='gray_r')  
-#plt.title(codecs.decode(tune[185]))
+#plt.title(codecs.decode(title[185]))
 #plt.savefig('%s.pdf'%i)
 #plt.show()
 

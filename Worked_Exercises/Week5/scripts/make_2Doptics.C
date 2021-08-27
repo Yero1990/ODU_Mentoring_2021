@@ -28,7 +28,7 @@ void make_2Doptics(int file_type=-1){
   float Q3_arr[11] = {0.90, 0.92, 0.94, 0.96, 0.98, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10 };
 
 
-  // Define quads tuning of tests files
+  // Define quads tuning of tests files (Q1 and Q3 are set to 1.00)
   float Q2test_arr[11] = {0.945, 0.955, 0.965, 0.975, 0.985, 0.995, 1.015, 1.025, 1.035, 1.045, 1.055};
 
   
