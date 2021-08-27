@@ -1,3 +1,10 @@
+% DO NOT TOUCH!!! This line is required to prevent erroneous bibliography
+% entries, where the name of the author gets replaced by a ----- line. This
+% has been observed in IEEE formatting, but this is how to fix it.
+% See: https://tex.stackexchange.com/questions/29381/is-it-normal-for-bibtex-to-replace-similar-author-names-with
+@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  CTLdash_repeated_names = "no"
+}  
 
 % General template formats for different references (you can also search online for latex reference types)
 % See https://www.bibtex.com/e/entry-types/
@@ -17,34 +24,77 @@
 % Reference:  https://www.systutorials.com/why-do-i-need-to-run-latex-bibtex-three-times-to-make-everything-look-good/)
 
 
-% Article template
-@article{CitekeyArticle,
-  author   = {P. J. Cohen},
-  title    = {The independence of the continuum hypothesis},
-  journal  = {Proceedings of the National Academy of Sciences},
-  year     = {1963},
-  volume   = {50},
-  number   = {6},
-  pages    = {1143--1148}
+%----------------------------------------------------------
+
+% ODU Mentoring Program 2021: Research Paper Bibliography
+
+%----------------------------------------------------------
+
+% Online Blog on Learning Neural Networks from Scratch (the exercises the student have been doing so far)
+@online{NNPart1_VZ_2019,
+  author  = {Victor Zhou},
+  title   =  {{Machine Learning for Beginners: An Introduction to Neural Networks}},
+  year    = {2019},
+  url     = {https://victorzhou.com/blog/intro-to-neural-networks/},
+  note    = {(Accessed on 2012-03-20)}
+}
+
+@online{CNNPart1_VZ_2019,
+  author  = {Victor Zhou},
+  title   =  {{CNNs, Part 1: An Introduction to Convolutional Neural Networks}},
+  year    = {2019},
+  url     = {https://victorzhou.com/blog/intro-to-cnns-part-1/},
+  note    = {(Accessed on 2012-03-20)}
+
+}
+
+@online{CNNPart2_VZ_2020,
+  author  = {Victor Zhou},
+  title   =  {{CNNs, Part 2: Training a Convolutional Neural Network}},
+  year    = {2020},
+  url     = {https://victorzhou.com/blog/intro-to-cnns-part-2/},
+  note    = {(Accessed on 2012-03-20)}
+
+}
+
+@online{CNN_Keras_VZ_2020,
+  author  = {Victor Zhou},
+  title   =  {{Keras for Beginners: Implementing a Convolutional Neural Network}},
+  year    = {2020},
+  url     = {https://victorzhou.com/blog/intro-to-cnns-part-2/},
+  note    = {(Accessed on 2012-03-20)}
+
 }
 
 
-% Book template 
-@book{CitekeyBook,
-  author    = {Leonard Susskind and George Hrabovsky},
-  title     = {Classical mechanics: the theoretical minimum},
-  publisher = {Penguin Random House},
-  address   = {New York, NY},
-  year      = {2014}
-}
+% --- Supplementary Online Article on Neural Networks ----
 
-% Online template
-@online{WinNT,
-  author  = {MultiMedia LLC},
-  title   =  {{MS Windows NT} Kernel Description},
-  year    = {1999},
-  url     = {http://web.archive.org/web/20080207010024/http://www.808multimedia.com/winnt/kernel.htm},
-  urldate = {2010-09-30}
+% (this article has the image of the neural network cartoon brain which you can include in the intro)
+@online{NN_Intro_TB_2020,
+  author  = {Tamoghno Bhattacharya},
+  title   =  {{An Introduction to Neural Networks with Implementation from Scratch in Python}},
+  year    = {2020},
+  url     = {https://towardsdatascience.com/an-introduction-to-neural-networks-with-implementation-from-scratch-using-python-da4b6a45c05b},
+  note    = {(Accessed on 2012-03-20)}
+
 }
 
 
+% (this article has the image of a dancing cartoon showing the basics of network architecture, which can be included in the introduction as well)
+@online{PyAI_NN_DM_2021,
+  author  = {Deborah Mesquita},
+  title   =  {{Python AI: How to Build a Neural Network & Make Predictions}},
+  year    = {2021},
+  url     = {https://realpython.com/python-ai-neural-network/},
+  note    = {(Accessed on 2012-03-20)}
+
+}
+
+
+% Private communication with C. Yero (use this reference if you write some technical sentence(s) for which you discussed with me, for example in the Methodology section)
+@misc{PC_CY_Aug2021,
+author ={C. Yero},
+howpublished = {Private communication},
+year = {2021},
+month = {August}
+}
