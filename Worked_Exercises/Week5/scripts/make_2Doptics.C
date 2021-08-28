@@ -7,12 +7,16 @@
 */
 
 void make_2Doptics(int file_type=-1){
-
+  
   if(file_type==1){
     cout << "Making 2D Optics Training Files . . ." << endl;
   }
-  if(file_type==2){
+  else if(file_type==2){
     cout << "Making 2D Optics Test Files . . ." << endl;
+  }
+  else{
+    cout << "Please run the code using the argumnets (1) for training file or (2) for test files  " << endl;
+    cout << "Example (from the command-line: root -l make_2Doptics(1) " << endl;
   }
   
   TString basename = "shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary";

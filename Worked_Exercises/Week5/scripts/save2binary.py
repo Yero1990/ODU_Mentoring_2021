@@ -1,3 +1,17 @@
+'''
+This script does the following:
+1. read the histogram objects for each (Q1,Q2,Q3) optics tune,
+2. convert the histogram object to a 2d numpy array (which can be plotted as well)
+3. saves the 2d numpy arrays, and corresponding labels to a binary format (.h5)
+
+This binary format can be interpreted by the Convolutional Neural Network (CNNs)
+similar to how the MNIST hand-written digits are stored in the database
+
+Code Usage: from the command-line, type:
+python save2binary.py <arg>   # <arg> = train, or <arg> = test
+to either save to a binary file the training or testing images
+to be used by the keras code.
+'''
 import ROOT
 from ROOT import *
 import sys
@@ -8,21 +22,7 @@ import numpy as np
 import os.path
 import codecs  # this module is used to decode binary strings to normal form
 
-'''
-This script does the following:
-1. read the histogram objects for each (Q1,Q2,Q3) optics tune,
-2. convert the histogram object to a 2d numpy array (which can be plotted as well)
-3. saves the 2d numpy arrays, and corresponding labels to a binary format (.h5)
 
-This binary format can be interpreted by the Convolutional Neural Network (CNNs)
-similar to how the MNIST hand-written digits are stored in the database
-
-User Input: data_type = 'training' or 'test'
-
-Example of Code Usage:
->> python save2binary.py
-
-'''
 
 from matplotlib import rc
 rc('text', usetex=True)
@@ -31,9 +31,9 @@ plt.rcParams["font.family"] = "Times New Roman"
 #-------------
 # USER INPUT
 #-------------
-data_type = 'test'   # User Input: 'training' or 'test'  
+analysis = sys.argv[1]
 
-
+    
 # Create empty dictionaryarrays to store images, labels and tunes
 # (the purpose is to put our exp. data in similar format as MNIST data)
 imgDict   = {}
@@ -48,7 +48,7 @@ cnt = 0 # (image, Q1, Q2, Q3) image-tune counter
 
 # ---- define min/max stepsize for quad tuning ------
 
-if data_type=='training':
+if analysis=='train':
     # training range
     q1_min = 0.90
     q1_max = 1.12
@@ -62,7 +62,7 @@ if data_type=='training':
     q3_max = 1.12
     q3_step = 0.02
 
-if data_type=='test':
+if analysis=='test':
     # testing range
     q1_min = 1.00
     q1_max = 1.0001
@@ -85,9 +85,9 @@ for Q1 in np.arange(q1_min, q1_max, q1_step):
 
             
             # define inputfile name
-            if data_type=='training':
+            if analysis=='train':
                 ifname = "../ROOTfiles/training_files/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.2f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
-            elif data_type=='test':
+            elif analysis=='test':
                 ifname = "../ROOTfiles/test_files/shms_pointtarg_7p5deg_2gev_wc_mscat_vac_shms_vary_Q1_%.2f_Q2_%.3f_Q3_%.2f_hist.root" % (Q1, Q2, Q3)
                 
 
@@ -154,9 +154,9 @@ for Q1 in np.arange(q1_min, q1_max, q1_step):
 
             
 # Save data images in binary format
-if data_type=='training':
+if analysis=='train':
     h5f = h5py.File('optics_training.h5', 'w')
-elif data_type=='test':
+elif analysis=='test':
     h5f = h5py.File('optics_test.h5', 'w')
     
 # create groups to store hierarchichal data
@@ -183,8 +183,9 @@ h5f.close()
 #-------------------------------
 
 # read  binary data images into array
-
-if data_type=='training':
+# This is for instructional purposes, so students
+#can see how to read each output from a binary .h5 file
+if analysis=='train':
     h5f = h5py.File('optics_training.h5', 'r')
     print('---------------------')
     print('print: h5f.keys()')
@@ -237,24 +238,3 @@ if data_type=='training':
     print('Plot Title of image [0]: ', h5f['titles']['xfp_vs_xpfp'][0])
 
     
-#    img = h5f['images']['']   # (186, 200, 200) 186 images of 200x200 pixels
-#    label = h5f['labels'][''] # (186, )   # 186 labels (or unique identifier for the image)
-#    title = h5f['titles']['']   # (186 )    # 186 titles (actual array of strings specifying the image and its title)
-
-#elif data_type=='test':
-#    h5f = h5py.File('optics_testing.h5', 'r')
-#    img = h5f['images']   # (186, 200, 200) 186 images of 200x200 pixels
-#    label = h5f['labels'] # (186, )   # 186 labels (or unique identifier for the image)
-#    title = h5f['titles']   # (186 )    # 186 titles (actual array of strings specifying the image and its title)
-
-
-# loop over each image, plot it and save (or display it)
-#for i in range(len(label)):
-#    print('label = ', label[i], ' title_config = ',title[i])
-#    print(img[i])
-#plt.imshow((img[1]), cmap='gray_r')  
-#plt.title(codecs.decode(title[185]))
-#plt.savefig('%s.pdf'%i)
-#plt.show()
-
-

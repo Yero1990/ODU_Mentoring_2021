@@ -1,15 +1,14 @@
 '''
-Script extarcted and modified from blog by Victor Zhou:
+Script extracted from blog by Victor Zhou:
 Keras for Beginners: Implementing a Convolutional Neural Network
 
 https://victorzhou.com/blog/keras-cnn-tutorial/
 
-This script is adapted to analyze the actual JLab Hall C optics data
+
+I have modified this script and adapted it to analyze the actual JLab Hall C optics data
 
 Code Usage: from the command-line, type:
-
 python keras_optics.py <arg>   # <arg> = train, or <arg> = test
-
 to either train or test the neural network with their corresponding images
 
 '''
@@ -110,7 +109,7 @@ filter_size = 6    #optimum (6x6 filters)
 pool_size   = 6    #optimum (6x6 pool size)
 
 model = Sequential([
-    Conv2D(num_filters, filter_size, input_shape=(200, 200, 1)),
+    Conv2D(num_filters, filter_size, input_shape=(200, 200, 1)),   #images are 200x200 pixels, the x1 simply means 'one' 200x200 pixelated image'
     MaxPooling2D(pool_size=pool_size),
     Flatten(),
     # 31 possible outcomes, each with a probability where the highest possible outcome is
@@ -291,13 +290,6 @@ elif analysis == 'test':
                 fout.write('---> INVALID PREDICTION \n\n')
                 pred_label = 'INVALID prediction'
 
-            # Calculate the Accuracy for each key (i.e, 2D correlation image, xfp_vs_xpfp, etc.)
-            test_accuracy = float(valid_cnt) /  predicted_labels.size
-            
-            fout.write('=======================\n')
-            fout.write('ACCURACY: %.2f / %.2f = %.4f  \n' % (float(valid_cnt), predicted_labels.size, test_accuracy ))
-            fout.write('=======================\n\n')
-
             
             # ----- General Formula for calculating the pad number on the subplot, based on the index ----
             #  idx   npad_odd = 2*(idx+1) - 1       npad_even = 2*idx + 2
@@ -311,14 +303,14 @@ elif analysis == 'test':
             npad_even = (2*idx) + 2
             
             # common title for all plots
-            plt.suptitle(title[i]+' | Accuracy = %.4f'%(test_accuracy))
+            plt.suptitle(title[i])
             
             # left subplot (predicted image/tune)
             #print('predicted tunes = ', predicted_tunes[idx])
             plt.subplot(5, 4, npad_odd) 
             plt.imshow(predicted_img[idx], cmap='gray_r')
             plt.title(codecs.decode(predicted_titles[idx]), fontsize=8)
-            plt.plot([], color='k', marker='', label='predicted')
+            plt.plot([], color='k', marker='', label=pred_label)
             plt.legend()
             
             # right subplot (true image/tune)
@@ -330,6 +322,12 @@ elif analysis == 'test':
             plt.legend()
                 
                 
+        # Calculate the Accuracy for each key (i.e, 2D correlation image, xfp_vs_xpfp, etc.)
+        test_accuracy = float(valid_cnt) /  predicted_labels.size
+            
+        fout.write('=======================\n')
+        fout.write('ACCURACY: %.2f / %.2f = %.4f  \n' % (float(valid_cnt), predicted_labels.size, test_accuracy ))
+        fout.write('=======================\n\n')
 
         # Save Images
         plt.savefig('final_results_%s.png'%(key)) # change the resolution of the saved image    
