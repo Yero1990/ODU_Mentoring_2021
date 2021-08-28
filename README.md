@@ -127,8 +127,12 @@ complicated images. When we analyze real experimental data from Jefferson Lab, E
 
 `Fifth/Sixth Weeks: August 30 - September 12, 2021` <br>
  
- * Discuss exercises using the Keras library and for the remaining two weeks, I will provide actual data from Hall C for pattern recognition. This task will require all the previously acquired knowledge of Neural Networks to apply to actual data. This is a work in progress I still need to think about how to provide this data from pixelated 2D color plots.
+ * Discuss exercises using the Keras library and for the remaining two weeks, I will provide actual data from Hall C for pattern recognition. This task will require all the previously acquired knowledge of Neural Networks to apply to actual data. 
+  
 
+ * I have added a compressed (Week_5.zip) direcotry which you can move to your respective working directories and de-compress the folder. See the instructions in the README.md file inside this directory as well as specific instructions on how to run the codes in the `./scripts` directory.
+ 
+ * Discuss about progress on writing the research paper. I decided it was best if you all write your own research paper with your own results for a better experience of consolidating the concepts and ideas learned during this program.  I can help with the writing, but only after you have completed the first draft. The instructions are in the `LaTex_templates/IEEE_template/` directory. You may copy the contents of this directory to your own working directries. 
  
 <br>
 Useful Documentation<br> 
