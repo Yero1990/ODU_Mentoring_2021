@@ -2,12 +2,12 @@
 
 An Introduction to Neural Networks
 
-This script has a simple example of a complete Neural Network from the blog written by Victor Zhou: 
+This script has a simple example of a complete Neural Network from the blog written by Victor Zhou:
 https://victorzhou.com/blog/intro-to-neural-networks/
 
 '''
 
-                                      
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -128,8 +128,8 @@ class OurNeuralNetwork:
 
         epoch_arr.append(epoch)
         loss_arr.append(loss)
-        
-        
+
+
 # Define dataset (weights - avg_weight,  heights - avg_height)
 data = np.array([
   [133-141.25, 65-66.75],  # Alice
