@@ -15,7 +15,6 @@ to either train or test the neural network with their corresponding images
 
 import numpy as np
 import matplotlib.pyplot as plt
-#import mnist
 import h5py   # module to load binary data format (.h5)
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
