@@ -1,0 +1,151 @@
+% DO NOT TOUCH!!! This line is required to prevent erroneous bibliography
+% entries, where the name of the author gets replaced by a ----- line. This
+% has been observed in IEEE formatting, but this is how to fix it.
+% See: https://tex.stackexchange.com/questions/29381/is-it-normal-for-bibtex-to-replace-similar-author-names-with
+@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  CTLdash_repeated_names = "no"
+}  
+
+% General template formats for different references (you can also search online for latex reference types)
+% See https://www.bibtex.com/e/entry-types/
+
+% To cite a biliographic entry in this file (references.bib),
+% make sure that this file is included in the main_file.tex file you compile
+% (where main_file.tex is replaced with whichever name you used)
+% >>  \bibliography{references}
+% >>  \bibliographystyle{IEEEtran}  %this line sets the bibliography style
+
+
+% Each time a new bibliography entry is added to this file, and/or a reference is cites in the document (\cite{ref_key}, do the following:
+% 1. pdflatex main_file.tex   (this updates the corresponding main_file.aux file with the new bib entry)
+% 2. bibtex main_file.aux     (run bibtex on the auxilary file: bibtex is a reference management software)
+%                              this command also creates a .bbl file, with ONLY the cited references sorted either alphabetically or by citation
+% 3. pdflatex main_file.tex   (run this command two times, the reason is explained in reference:
+% Reference:  https://www.systutorials.com/why-do-i-need-to-run-latex-bibtex-three-times-to-make-everything-look-good/)
+
+
+%----------------------------------------------------------
+
+% ODU Mentoring Program 2021: Research Paper Bibliography
+
+%----------------------------------------------------------
+
+% Online Blog on Learning Neural Networks from Scratch (the exercises the student have been doing so far)
+@online{NNPart1_VZ_2019,
+  author  = {Victor Zhou},
+  title   =  {{Machine Learning for Beginners: An Introduction to Neural Networks}},
+  year    = {2019},
+  url     = {https://victorzhou.com/blog/intro-to-neural-networks/},
+  note    = {(Accessed on 2021-08-15)}
+}
+
+@online{CNNPart1_VZ_2019,
+  author  = {Victor Zhou},
+  title   =  {{CNNs, Part 1: An Introduction to Convolutional Neural Networks}},
+  year    = {2019},
+  url     = {https://victorzhou.com/blog/intro-to-cnns-part-1/},
+  note    = {(Accessed on 2021-08-20)}
+
+}
+
+@online{CNNPart2_VZ_2020,
+  author  = {Victor Zhou},
+  title   =  {{CNNs, Part 2: Training a Convolutional Neural Network}},
+  year    = {2020},
+  url     = {https://victorzhou.com/blog/intro-to-cnns-part-2/},
+  note    = {(Accessed on 2021-08-27)}
+
+}
+
+@online{CNN_Keras_VZ_2020,
+  author  = {Victor Zhou},
+  title   =  {{Keras for Beginners: Implementing a Convolutional Neural Network}},
+  year    = {2020},
+  url     = {https://victorzhou.com/blog/intro-to-cnns-part-2/},
+  note    = {(Accessed on 2021-08-27)}
+
+}
+@online{CNN_Keras_VZ_SM_2019,
+  author  = {Victor Zhou},
+  title   =  {{A Simple Explanation of the Softmax Function}},
+  year    = {2019},
+  url     = {https://victorzhou.com/blog/softmax/},
+  note    = {(Accessed on 2021-08-27)}
+
+}
+
+
+% --- Supplementary Online Article on Neural Networks ----
+
+% (this article has the image of the neural network cartoon brain which you can include in the intro)
+@online{NN_Intro_TB_2020,
+  author  = {Tamoghno Bhattacharya},
+  title   =  {{An Introduction to Neural Networks with Implementation from Scratch in Python}},
+  year    = {2020},
+  url     = {https://towardsdatascience.com/an-introduction-to-neural-networks-with-implementation-from-scratch-using-python-da4b6a45c05b},
+  note    = {(Accessed on 2021-09-15)}
+}
+
+
+% (this article has the image of a dancing cartoon showing the basics of network architecture, which can be included in the introduction as well)
+@online{PyAI_NN_DM_2021,
+  author  = {Deborah Mesquita},
+  title   =  {{Python AI: How to Build a Neural Network & Make Predictions}},
+  year    = {2020},
+  url     = {https://realpython.com/python-ai-neural-network/},
+  note    = {(Accessed on 2021-08-12)}
+}
+
+
+% Private communication with C. Yero (use this reference if you write some technical sentence(s) for which you discussed with me, for example in the Methodology section)
+@misc{PC_CY_Aug2021,
+author ={C. Yero},
+howpublished = {Private communication},
+year = {2021},
+month = {August}
+}
+
+
+@online{Smax_img_2020,
+  author  = {Z Singer},
+  title   =  {{Softmax and Uncertainty}},
+  year    = {2019},
+  url     = {https://towardsdatascience.com/softmax-and-uncertainty-c8450ea7e064},
+  note    = {(Accessed on 2021-09-12)}
+}
+
+@online{Conv_layer_2020,
+  author  = {IBM Cloud Educaion},
+  title   =  {{Convolutional Neural Networks}},
+  year    = {2020},
+  url     = {https://www.ibm.com/cloud/learn/convolutional-neural-networks},
+  note    = {(Accessed on 2021-09-12)}
+}
+
+
+@online{MNIST,
+  author  = {Yann LeCun},
+  title   =  {{MNIST Images}},
+  url     = {http://yann.lecun.com/exdb/mnist/},
+  note    = {(Accessed on 2021-09-25)}
+}
+
+@misc{Blender_Aug2021,
+author ={Ajay Mehra},
+howpublished = {Used Blender Software},
+url ={https://blender.org},
+year = {2021},
+month = {October}
+}
+@misc{Desmos_Oct2021,
+author ={Ajay Mehra},
+howpublished = {Used Desmos graphing Calculator},
+url ={https://www.desmos.com/calculator},
+year = {2021},
+month = {October}
+}
+@online{Result_images,
+  author  = {Ajay Mehra},
+  title   =  {{Result images}},
+  url     = {https://github.com/AJRocks321/Temp/tree/main/Result},
+}
