@@ -62,10 +62,12 @@ mothupizain@gmail.com}
 %email address or ORCID}
 }
 
+
+
 \maketitle
 
 \begin{abstract}
-Our Research focused on developing algorithms for the recognition and prediction of specific tune patterns in spectrometer optics data from Experimantal Hall C at Jefferson Laboratory. The main goal was to create a machine learning model capable of recognizing optics patterns that would otherwise be tedious for humans to classify, in a mere matter of seconds with reasonably high accuracy. Specifically, we utilised the Keras deep learning Application Programming Interface(API) to build a Convolutional Neural Network(CNN). The CNN was trained on a dataset of 186 simulated optics patterns and a Cross-Entropy function was implemented to assess the model's accuracy throughout the training process. The model was able to reach an average accuracy close to 100\text{\%} and an average loss of approximately 0.4. The machine learning model's ability to predict output was then tested against a set of 60 new images and achieved an average accuracy of 83\text{\%}.  
+Our Research focused on developing algorithms for the recognition and prediction of specific tune patterns in spectrometer optics data from Experimantal Hall C at Jefferson Laboratory. The main goal was to create a machine learning model capable of recognizing optics patterns that would otherwise be tedious for humans to classify, in a mere matter of seconds with reasonably high accuracy. Specifically, we utilised the Keras deep learning Application Programming Interface(API) to build a Convolutional Neural Network(CNN). The CNN was trained on a dataset of 186 simulated optics patterns and a Cross-Entropy function was implemented to assess the model's accuracy throughout the training process. The model was able to reach an average accuracy close to 100\text{\%} and an average loss of approximately 0.3. The machine learning model's ability to predict output was then tested against a set of 60 new images and achieved an average accuracy of 83\text{\%}.  
 \end{abstract}
 
 %\begin{IEEEkeywords}
@@ -76,7 +78,6 @@ Our Research focused on developing algorithms for the recognition and prediction
 Since the inception of Artificial Intelligence in the mid 20th century, there has been rapid progress towards the creation of systems capable of matching or even surpassing human ability. As a result, Machine Learning (ML) a subset of artificial intelligence, emerged. In ML computer systems learn to perform tasks without bein explicit instructions, they learn purely from a set of data. The concept of computers learning directly from data has led to many algorithms modelled after the way humans learn. In particular, Neural Networks were inspired by the wiring of the human brain, imitating the interconnectedness of the neurons.
  See Fig.\ref{fig:test_img}
 \cite{NNPart1_VZ_2019}
-
 
 % Here you would insert an image (for example, the cartoon of the neural network brain)
 \begin{figure}[h]  % you can google what eahc of these options, e.g. [h!] means when placing a picture, and you can adjust accordingly
@@ -103,15 +104,10 @@ A simple illustration of neural network architecture is shown in Fig. 2 (Give re
 \end{figure}
 
 
-[Here you would show a figure from the reference [1], whcih shows a dancing cartoon translated to "dancing" output ]
 
 \section{Methodology}
-Discuss your research methodology. Did you employ qualitative or quantitative research methods?
-Did you administer a questionnaire or interview people? Any field research conducted? How did you collect data?
-Did you utilize other libraries or archives? And so on. For example, see next paragraph:\\
-\indent In this research, we analyze a total of 185 distinct simulated optics patterns from the Super High Momentum Spectrometer (SHMS) at Hall C of Jefferson Lab.
-There were six different optics correlations (xfp\_vs\_yfp, xpfp\_vs\_ypfp, etc. you will see this when you do the final project . . .make sure to use mathfonts when writing these,
-labels, so they look nicer, for example, $x_{fp}$ vs. $y_{fp}$), each pattern had 31 optics images with varying optics tunes [Q1, Q2, Q3], corresponding to the spectrometer quadrupole magnets, summarized in Table \ref{tab:tune_stpSize}:
+In this research, we analyze a total of 185 distinct simulated optics patterns from the Super High Momentum Spectrometer (SHMS) at Hall C of Jefferson Lab.
+There were six different optics correlations ( $x_{fp}$ vs. $y_{fp}$,  $x_{pfp}$ vs. $y_{pfp}$, $x_{fp}$ vs. $y_{pfp}$,  $x_{pfp}$ vs. $y_{fp}$, $x_{fp}$ vs. $x_{pfp}$ and  $y_{pfp}$ vs. $y_{fp}$ . Each pattern had 31 optics images with varying optics tunes [Q1, Q2, Q3], corresponding to the spectrometer quadrupole magnets, summarized in Table \ref{tab:tune_stpSize}:
 
 \begin{table}[h]
 	\begin{center}
@@ -130,7 +126,7 @@ labels, so they look nicer, for example, $x_{fp}$ vs. $y_{fp}$), each pattern ha
 \end{table}
 
 Each of the six 2D SHMS optics pattern correlations were trained separately, using 31 different optics tunes
-per correlation plot for a total of 185 images. The optics patters for testing the network consisted of only
+per correlation plot for a total of 186 images. The optics patters for testing the network consisted of only
 varying Q2 from 0.945 to 1.055 in steps of 0.01, while keeping Q1 and Q3 tunes fixed at unity.
 To test the neural network after it had been trained, a set of 10 images were used for each 2D optics correlation, where Q1 and Q3
 tunes were kept fixed at unity while Q2 was varied from 0.955 to 1.055 in steps of 0.01 for a total of 10 Q2 tunes.\\
@@ -141,10 +137,7 @@ information through me. For example:  [3] Private communication. C. Yero. August
 
 \section{Data Analysis Procedure}
 
-This is generally the longest part of the paper. It's where the author supports the thesis and builds the argument.
-It contains most of the citations and analysis. This section should focus on a rational development of the thesis with clear
-reasoning and solid argumentation at all points. A clear focus, avoiding meaningless digressions, provides the essential unity
-that characterizes a strong education paper. An example of how to start is in the next paragraph. \\
+
 %This figure position may need to be changed and put someplace else in this file, depending on whether it shows up
 %in the location you want in your pdf. (Let me know if you have any issues with the placement of this picture)
 \begin{figure*}
@@ -152,24 +145,17 @@ that characterizes a strong education paper. An example of how to start is in th
   \includegraphics[scale=0.3]{images/CNN_layers.png}
   \caption{Description of image}
 \end{figure*}
-\indent The Neural Network used in this research consists of 5 layers in total (See Fig.\ref{}). The input and output layers,
-represent the raw input image and output model prediction, respectively, and intermediate hidden layers,
-\textit{convolutional}, \textit{pooling}, and \textit{activation} layers, each with a specific image analysis task
-as described in the subsections below.\\
+\indent Our Neural Network utilised 5 layers in total(See Fig.\ref{}). It consisted of input and output layers which represent the raw input image and output prediction and intermediate hidden layers each with a specific image analysis task. The intermediate layers are the Convolutional layer, Pooling layer and Activation layer described in the subsections below.\\
 \subsection{Convolutional Layer}
-Briefly describe what the convolutional layer does, its dimensions, and how many filters used and the filter dimentions. Give reference to the online blog you read, \cite{CNNPart1_VZ_2019}
+The convolutional layer contains a set of 12 filters with dimension 6x6,  which are convolved with the input image and outputed by the layer. The process of convolving the image with the filters consists of overlaying the filter over s group of pixels(with the same dimensions as the filter), carrying out element-wise multiplication, calculating the sum of the results and using this as a pixel value in the output image. We then move on to the next possible grouping of pixels and continue the process until the entire image has been convolved with the filter. Convolutional layers help detect specific localized features in images which aids the model in making more accurate predictions.
+, \cite{CNNPart1_VZ_2019}
 \subsection{Pooling Layer}
-Briefly describe what the convolutional layer does, and which specific pooling did you used, e.g., maxpooling?. Give reference to the online blog you read, \cite{CNNPart1_VZ_2019}
+We used a pooling size of 6 which decrease the size of  our input images from 200x200 to 32x32. This allows for the model to reduces the number of computations it has to perform while still preserving the important elements of the image. This is achieved by “pooling” or grouping pixel values together and selecting the maximum of the values which acts as a summary of the features present in the region, \cite{CNNPart1_VZ_2019}.
 \subsection{Activation Layer}
-Briefly describe what the activation layer does, and which specific activation layer did you used, e.g., softmax. Maybe you can put the formula of softmax, and introduce mention how the loss is calculated. If you have not
-talked about what the the loss, then also give a brief description of what it is (See Ref. \cite{}). For the layer description, give reference to the online blog you read, \cite{CNNPart1_VZ_2019}, and probably also
+The activation layer uses a function known as an activation function to transform an unbounded inout to a bounded output. In this research we used the Softmax function as our activation function. The Softmax function is given by the function $\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}$ and turns the neural networks output values into probabilities which are more useful when evaluating our models predictions as it allows us to assess the certainty with which the NN makes a prediction. We assess our the performance of our NN using a loss function. The loss function compares the prediction of the NN to the actual value and calculates how far off the model is. This is then feed back to NN so that it can adjust its weights and biases to achieve a lower loss or higher accuracy (See Ref. \cite{}). For the layer description, give reference to the online blog you read, \cite{CNNPart1_VZ_2019}, and probably also
 the article which describes what is softmax. You will need to probably add a new reference to the bibliography to be able to cite the softmax online article, similar to the other citations you have been doing.\\
 
-**IMPORTANT:  Don't worry about putting the details of the math (partial derivatives) that was done to actually carry out the forward/bacpropagation of the neural network.
-Just focus on explaining the basics of each layer used, and just mention that once the image passed through the layers, the output was compared to the known result, and
-a backpropagation method was done to minimize the loss by determining the optimum parameters. And mention that an epoch consists of a complete forward/backward propagation.
-Then, the images were re-analyzed with the updated parameters in subsequent epochs to further optimize the parameters and minimize the loss.  ** You'll probably have to also
-give a brief 1-sentence description of what the loss is in a neural network.\\
+The input image is passed through all the layers and the final output of the Softmax layer is a prediction. The prediction is then compared to the known result and the loss is calculated. A backpropagation method is used to minimize the loss by updating the parameters of the NN so as to decrease the loss. Each combination of a forward runthrough of  the NN and updating of parameters via backproagation is known as an epoch. The updated parameters are then analysed through the same process for a certain number of epochs so that the loss is minimized.
 \indent The data with specific [Q1,Q2,Q3] tunes were simulated using the standard Hall C simulation program (\texttt{mc-single-arm})
 and the raw data output was written to a ROOTfile. A separate ROOT C++ script (\texttt{make\_2Doptics.C}) was used to form each of
 the six abovementioned 2D focal plane correlations correlations which were stored in a separate ROOTfile as histogram objects.
@@ -179,18 +165,18 @@ the hidden layers of the network described in Section 4 of this article.
 
 
 \section{Results and Discussion}
-Summarize results and discuss implications of these results. After spending a great deal of time and energy introducing and arguing the points in the main body of the paper,
-the conclusion brings everything together and underscores what it all means. A stimulating and informative conclusion
-leaves the reader informed and well-satisfied. A conclusion that makes sense, when read independently from the rest of
-the paper, will win praise. \\
-\indent The purpose of this research was to teach a machine to recognize optics patterns that would otherwise be
-difficult to distinguish by the "human eye". With the help of Keras API, we were able to train and test a CNN
-by providing simulated optics data from Jefferson Lab, Hall C.  Each of the six 2D optics correlation was trained with
-31 optics tunes, and were able to reach and plateau at an accuracy of ~X \%, and a loss of ~Y \%, in Z epochs of training.
-We used 10 test images per each of the six 2D optics correlations, and network was able to correctly predict
-each the patterns with at least ~N \% accuracy. The results of the training are shown in Fig.\ref{}
 
-[Here show the plot of Accuracy (and Loss) vs. epochs] to show how the training progresses. \\
+\indent In our research our aim was to teach a computer to recognize optics patterns that would otherwise be tedious or difficult to distinguish for humans. Using the Keras API we trained and tested a CNN by providing simulated optics data from Jefferson Laboratory, Hall C. Each of the six 2D optics correlations were trained with 31 optics tunes and were able to reach and plateau at an accuracy of 98\% and a loss of 0.3 in 100 epochs. We used 10 test images per optics correlation and the network was able to correctly predict the patterns with at least 83\% accuracy. The results of the training are shown in Fig.\ref{}. These results prove that the computer can recognize these optics patterns with a reasonably high accuracy and as such can be used in support of humans to greatly reduce the time it takes to classify optics tune patterns.
+
+
+
+\begin{figure*}
+  \centering
+  \includegraphics[scale=0.3]{images/Figure_1.png}
+  \caption{Plot of Accuracy and Loss vs Number of Epochs}
+\end{figure*}
+
+
 
 The results of the test images is summarized in Table \ref{tab:results}
 \begin{table}[h]
