@@ -1,4 +1,6 @@
 \documentclass[conference]{IEEEtran}
+\usepackage[hyphens]{url}  % this line solved the problem of run over margins of url hyperlinks 
+
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
@@ -6,12 +8,11 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[breaklinks=true]{hyperref}
 \usepackage{pdfpages}
 \usepackage{gensymb}
 \usepackage{textcomp}
 \usepackage{xcolor}
-
 \hypersetup{
     colorlinks=true, %set true if you want colored links
     linktoc=all,     %set to all if you want both sections and subsections linked
@@ -40,7 +41,7 @@ ajaymehra@duck.com}
 The aim of this research was to develop a pattern recognition algorithm for predicting
 simple image patterns using actual simulated data from Experimental Hall C at Jefferson Lab. 
 Using Keras library, a Convolution Neural Network(CNN) model in Python was designed with certain hidden layers like Colvolution, Maxpooling and Activation Layer, and each layer is aimed to extract different features from the images.
-While training it against 186 images of simulation data, the model worked very efficiently and reached an accuracy of ~100\% with a loss of 0.38. The models' predictive power was then tested with a 60 images, in which it achieved ~80 \% accuracy.\\
+While training it against 186 images of simulation data, the model worked very efficiently and reached an accuracy of ~100\% with a loss of 0.38. The models' predictive power was then tested with 60 images, in which it achieved ~80 \% accuracy.\\
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -70,8 +71,7 @@ In this Research paper, the implementation of Neural Networks in case of Hall C 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.22]{images/neural.jpeg}
-    \caption{Schematic representation of a neural network\\
-    Note: reprinted from Ref. \cite{NN_Intro_TB_2020}}
+    \caption{Schematic representation of a neural network. Note: reprinted from Ref. \cite{NN_Intro_TB_2020}}
     \label{fig:neuron_img.png}
 \end{figure}
 
@@ -297,13 +297,13 @@ The results of the test images is summarized in Table \ref{tab:results}.
 \end{table}
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.57]{images/valid.png}
+  \includegraphics[scale=0.5]{images/valid.png}
   \caption{A sample optics image and its prediction by our model.}
   \label{fig: images and their predicted images}
 \end{figure}
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.57]{images/invalid.png}
+  \includegraphics[scale=0.5]{images/invalid.png}
   \caption{A sample optics image and its prediction by our model.}
   \label{fig: images and their predicted images}
 \end{figure}.
