@@ -89,7 +89,7 @@ Since the inception of Artificial Intelligence in the mid 20th century, there ha
 \begin{figure}[htb!]  % you can google what eahc of these options, e.g. [h!] means when placing a picture, and you can adjust accordingly
   \centering
   \includegraphics[scale=0.3]{images/Artificial_neural_network.png}
-  \caption{Example of an Artificial Neural Network. \\ \centering Note: Reprinted from Ref.\cite{Artificial_Neural_Network}.}
+  \caption{Example of an Artificial Neural Network. \\  \centering Reprinted from Ref.\cite{Artificial_Neural_Network}.}
   \label{fig:Artificial_Neural_Network}
 \end{figure}
 
@@ -105,7 +105,8 @@ A simple illustration of a neural network architecture is shown in Fig.\ref{fig:
 \begin{figure}[h]
  \centering
   \includegraphics[scale=0.3]{images/ConvolutionalNeuralNetwork.png}
-  \caption{Illustration of the structure of a Convolutional Neural Network. \\ \centering Note: Reprinted from Ref.\cite{CNN_Image}.}
+  \caption{Illustration of the structure of a Convolutional Neural Network. 
+\\ \centering Reprinted from Ref.\cite{CNN_Image}.}
   \label{fig:CNN_Image}
 \end{figure}
 
@@ -138,6 +139,8 @@ To test the neural network after it had been trained, a set of 10 images were us
 tunes were kept fixed at unity while Q2 was varied from 0.955 to 1.055 in steps of 0.01 for a total of 10 Q2 tunes.\\ Figure. \ref{fig:2d_correlation2} shows an example of a 2D Optics Correlation Plot.
 
 
+
+
 \begin{figure}[h]
  \centering
   \includegraphics[scale=0.2]{images/2d_correlation2.png}
@@ -145,6 +148,12 @@ tunes were kept fixed at unity while Q2 was varied from 0.955 to 1.055 in steps 
   \label{fig:2d_correlation2}
 \end{figure}
 
+The data with specific [Q1,Q2,Q3] tunes were simulated using the standard Hall C simulation program (\texttt{mc-single-arm})
+and the raw data output was written to a ROOTfile. A separate ROOT C++ script (\texttt{make\_2Doptics.C}) was used to form each of
+the six abovementioned 2D focal plane correlations correlations which were stored in a separate ROOTfile as histogram objects.
+The 2D histograms were then converted to a 2D pixelated array and stored in binary format (.h5) via a Python code (\texttt{save2binary.py})
+array to be read by the Neural Network using Python Keras. Each optics image used was 200x200 pixels and was passed thorugh each of
+the hidden layers of the network described in Section 4 of this article.
 
 
 
@@ -176,13 +185,6 @@ The activation layer uses a function known as an activation function to transfor
 
 The input image is passed through all the layers and the final output of the Softmax layer is a prediction. The prediction is then compared to the known result and the loss is calculated. A backpropagation method is used to minimize the loss by updating the parameters of the NN so as to decrease the loss. Each combination of a forward runthrough of  the NN and updating of parameters via backproagation is known as an epoch. The updated parameters are then analysed through the same process for a certain number of epochs so that the loss is minimized.
 
-\subsection{Data Analysis Procedure}
-The data with specific [Q1,Q2,Q3] tunes were simulated using the standard Hall C simulation program (\texttt{mc-single-arm})
-and the raw data output was written to a ROOTfile. A separate ROOT C++ script (\texttt{make\_2Doptics.C}) was used to form each of
-the six abovementioned 2D focal plane correlations correlations which were stored in a separate ROOTfile as histogram objects.
-The 2D histograms were then converted to a 2D pixelated array and stored in binary format (.h5) via a Python code (\texttt{save2binary.py})
-array to be read by the Neural Network using Python Keras. Each optics image used was 200x200 pixels and was passed thorugh each of
-the hidden layers of the network described in Section 4 of this article.
 
 
 \section{Results and Discussion}
