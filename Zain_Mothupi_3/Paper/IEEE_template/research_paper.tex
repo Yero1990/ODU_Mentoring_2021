@@ -148,12 +148,15 @@ tunes were kept fixed at unity while Q2 was varied from 0.955 to 1.055 in steps 
   \label{fig:2d_correlation2}
 \end{figure}
 
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
 The data with specific [Q1,Q2,Q3] tunes were simulated using the standard Hall C simulation program (\texttt{mc-single-arm})
 and the raw data output was written to a ROOTfile. A separate ROOT C++ script (\texttt{make\_2Doptics.C}) was used to form each of
 the six abovementioned 2D focal plane correlations correlations which were stored in a separate ROOTfile as histogram objects.
 The 2D histograms were then converted to a 2D pixelated array and stored in binary format (.h5) via a Python code (\texttt{save2binary.py})
 array to be read by the Neural Network using Python Keras. Each optics image used was 200x200 pixels and was passed thorugh each of
-the hidden layers of the network described in Section 4 of this article.
+the hidden layers of the network described in Section III of this article.
 
 
 
