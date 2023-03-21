@@ -178,7 +178,7 @@ each the patterns with at least ~N% accuracy. The results of the training are sh
 The results of the test images is summarized in Table 2
 
 --------------------------------------------------------------------------------------------
-2D optics correlation   |  # of predicted patterns | total # of patterns  | Accuracy
+2D optics correlation   |  # of correctly predicted patterns | total # of patterns  | Accuracy
 xfp_vs_xpfp                     9                         10                  0.9 ( 90 %)
 xfp_vs_yfp                      10                        10                  1.0 (100%)
 xfp_vs_ypfp                     
